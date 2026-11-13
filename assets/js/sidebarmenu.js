@@ -21,8 +21,8 @@ if ((at = "vertical")) {
       function findMatchingElement() {
         var currentUrl = window.location.href.split("?")[0].split("#")[0];
         var currentPage = currentUrl.substring(currentUrl.lastIndexOf("/") + 1).toLowerCase();
-        if (!currentPage || currentPage === "" || currentPage === "index.html") {
-          currentPage = "dashboard.html";
+        if (!currentPage || currentPage === "" || currentPage === "index.html" || currentPage === "dashboard.html") {
+          currentPage = "index.html";
         }
 
         var anchors = document.querySelectorAll(".sidebarmenu .sidebar-link");
@@ -30,7 +30,7 @@ if ((at = "vertical")) {
         // 1. Exact match by file name in href attribute
         for (var i = 0; i < anchors.length; i++) {
           var href = (anchors[i].getAttribute("href") || "").split("?")[0].split("#")[0].toLowerCase();
-          if (href === currentPage) {
+          if (href === currentPage || (currentPage === "index.html" && href === "dashboard.html")) {
             return anchors[i];
           }
         }
