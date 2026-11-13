@@ -1,0 +1,2222 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-bs-theme="light" data-color-theme="Blue_Theme" data-layout="vertical"
+  data-boxed-layout="boxed" data-card="shadow">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>JSLPS - UI Kit & Design System | Govt of Jharkhand</title>
+
+  <!-- Favicon icon-->
+  <link rel="shortcut icon" type="image/svg+xml" href="assets/images/logos/logo-icon.svg" />
+  <link rel="icon" type="image/svg+xml" href="assets/images/logos/logo-icon.svg" />
+
+  <!-- Core Css & Fonts -->
+  <link rel="stylesheet" href="assets/css/styles.css" />
+  <link rel="stylesheet" href="assets/css/tabler-icons.min.css" />
+  <!-- Custom Animations and Advanced Shadow System -->
+  <link rel="stylesheet" href="assets/css/custom-animations.css" />
+
+  <style>
+    /* In-page styling polish */
+    .brand-logo img {
+      max-height: 65px;
+      transition: transform 0.3s ease;
+    }
+
+    .brand-logo:hover img {
+      transform: scale(1.03);
+    }
+
+    .card {
+      transition: transform 0.28s ease, box-shadow 0.28s ease;
+    }
+
+    .avatar-sm {
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+
+    .pulse-glow-green {
+      box-shadow: 0 0 15px rgba(16, 185, 129, 0.4);
+    }
+
+    /* UI Kit Specific Enhancements */
+    .uikit-nav-pill {
+      font-size: 0.8rem;
+      font-weight: 600;
+      padding: 6px 14px;
+      border-radius: 20px;
+      color: #475569;
+      background: #f1f5f9;
+      text-decoration: none;
+      transition: all 0.22s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      white-space: nowrap;
+    }
+
+    .uikit-nav-pill:hover,
+    .uikit-nav-pill.active {
+      background: var(--bs-primary, #635bff);
+      color: #ffffff !important;
+      box-shadow: 0 4px 12px rgba(99, 91, 255, 0.3);
+    }
+
+    .uikit-nav-pill .badge {
+      font-size: 0.68rem;
+    }
+
+    .ui-example-card {
+      border: 1px solid rgba(226, 232, 240, 0.9);
+      border-radius: 16px;
+      background: #ffffff;
+      box-shadow: 0 4px 18px -4px rgba(15, 23, 42, 0.05);
+      margin-bottom: 24px;
+      overflow: hidden;
+    }
+
+    .ui-example-header {
+      padding: 16px 20px;
+      background: #f8fafc;
+      border-bottom: 1px solid rgba(226, 232, 240, 0.9);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .ui-example-body {
+      padding: 24px;
+    }
+
+    .ui-preview-box {
+      background: #f8fafc;
+      border: 1px dashed rgba(203, 213, 225, 0.9);
+      border-radius: 12px;
+      padding: 20px;
+      margin-bottom: 16px;
+    }
+
+    .icon-card {
+      padding: 16px 12px;
+      border-radius: 12px;
+      border: 1px solid rgba(226, 232, 240, 0.9);
+      background: #ffffff;
+      text-align: center;
+      transition: all 0.25s ease;
+      cursor: pointer;
+    }
+
+    .icon-card:hover {
+      border-color: var(--bs-primary, #635bff);
+      transform: translateY(-3px);
+      box-shadow: 0 8px 18px -4px rgba(99, 91, 255, 0.18);
+    }
+
+    .icon-card iconify-icon,
+    .icon-card i {
+      font-size: 28px;
+      display: inline-block;
+      margin-bottom: 8px;
+    }
+
+    .icon-card .icon-title {
+      font-size: 0.72rem;
+      font-weight: 600;
+      color: #64748b;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .round-36 {
+      width: 36px;
+      height: 36px;
+    }
+
+    .round-40 {
+      width: 40px;
+      height: 40px;
+    }
+
+    .round-48 {
+      width: 48px;
+      height: 48px;
+    }
+
+    .sticky-uikit-nav {
+      position: sticky;
+      top: 70px;
+      z-index: 95;
+      background: rgba(255, 255, 255, 0.88);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      padding: 10px 0;
+      border-bottom: 1px solid rgba(226, 232, 240, 0.8);
+      margin-bottom: 25px;
+    }
+
+    .btn-gradient-blue {
+      background: linear-gradient(135deg, #4338ca 0%, #3b82f6 50%, #2563eb 100%) !important;
+      color: #fff !important;
+      border: none !important;
+      box-shadow: 0 4px 14px rgba(59, 130, 246, 0.35);
+    }
+
+    .btn-gradient-blue:hover {
+      box-shadow: 0 6px 18px rgba(59, 130, 246, 0.5);
+      color: #fff !important;
+    }
+
+    .btn-gradient-emerald {
+      background: linear-gradient(135deg, #047857 0%, #10b981 50%, #0d9488 100%) !important;
+      color: #fff !important;
+      border: none !important;
+      box-shadow: 0 4px 14px rgba(16, 185, 129, 0.35);
+    }
+
+    .btn-gradient-emerald:hover {
+      box-shadow: 0 6px 18px rgba(16, 185, 129, 0.5);
+      color: #fff !important;
+    }
+
+    .btn-gradient-amber {
+      background: linear-gradient(135deg, #b45309 0%, #f59e0b 50%, #ea580c 100%) !important;
+      color: #fff !important;
+      border: none !important;
+      box-shadow: 0 4px 14px rgba(245, 158, 11, 0.35);
+    }
+
+    .btn-gradient-amber:hover {
+      box-shadow: 0 6px 18px rgba(245, 158, 11, 0.5);
+      color: #fff !important;
+    }
+
+    .btn-gradient-purple {
+      background: linear-gradient(135deg, #6d28d9 0%, #8b5cf6 50%, #6366f1 100%) !important;
+      color: #fff !important;
+      border: none !important;
+      box-shadow: 0 4px 14px rgba(139, 92, 246, 0.35);
+    }
+
+    .btn-gradient-purple:hover {
+      box-shadow: 0 6px 18px rgba(139, 92, 246, 0.5);
+      color: #fff !important;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Preloader -->
+  <div class="preloader">
+    <div class="d-flex flex-column align-items-center justify-content-center h-100">
+      <img src="assets/images/logos/logo-icon.svg" alt="JSLPS Loader" width="64" height="64" class="float-icon mb-3" />
+      <div class="spinner-border text-success" role="status" style="width: 2.5rem; height: 2.5rem;">
+        <span class="visually-hidden">Loading JSLPS UI Kit...</span>
+      </div>
+      <h6 class="mt-3 fw-bold text-dark letter-spacing-1">JSLPS UI Design System</h6>
+      <span class="fs-2 text-muted">Jharkhand State Livelihood Promotion Society</span>
+    </div>
+  </div>
+
+  <div id="main-wrapper">
+    <!-- =============================================== -->
+    <!-- Sidebar Start -->
+    <!-- =============================================== -->
+    <aside class="side-mini-panel with-vertical">
+      <div>
+        <!-- Start Vertical Layout Sidebar -->
+        <div class="iconbar">
+          <div>
+            <div class="mini-nav">
+              <div class="brand-logo d-flex align-items-center justify-content-center">
+                <a class="nav-link sidebartoggler" id="headerCollapse" href="javascript:void(0)" title="Toggle Sidebar">
+                  <iconify-icon icon="solar:hamburger-menu-line-duotone" class="fs-7 text-primary"></iconify-icon>
+                </a>
+              </div>
+              <ul class="mini-nav-ul" data-simplebar>
+                <!-- Dashboards -->
+                <li class="mini-nav-item selected" id="mini-1">
+                  <a href="javascript:void(0)" data-bs-toggle="tooltip" data-bs-trigger="hover" data-bs-container="body"
+                    data-bs-delay='{"show":120,"hide":0}' data-bs-custom-class="custom-tooltip"
+                    data-bs-placement="right" data-bs-title="Dashboards & UI Kit">
+                    <iconify-icon icon="solar:layers-line-duotone" class="fs-7"></iconify-icon>
+                  </a>
+                </li>
+                <!-- Sakhi Mandal / SHG -->
+                <li class="mini-nav-item" id="mini-2">
+                  <a href="javascript:void(0)" data-bs-toggle="tooltip" data-bs-trigger="hover" data-bs-container="body"
+                    data-bs-delay='{"show":120,"hide":0}' data-bs-custom-class="custom-tooltip"
+                    data-bs-placement="right" data-bs-title="Sakhi Mandal & SHGs">
+                    <iconify-icon icon="solar:users-group-rounded-line-duotone" class="fs-7"></iconify-icon>
+                  </a>
+                </li>
+                <!-- Livelihoods & Palash -->
+                <li class="mini-nav-item" id="mini-3">
+                  <a href="javascript:void(0)" data-bs-toggle="tooltip" data-bs-trigger="hover" data-bs-container="body"
+                    data-bs-delay='{"show":120,"hide":0}' data-bs-custom-class="custom-tooltip"
+                    data-bs-placement="right" data-bs-title="Palash Brand & Enterprise">
+                    <iconify-icon icon="solar:shop-2-line-duotone" class="fs-7"></iconify-icon>
+                  </a>
+                </li>
+                <!-- Financial Inclusion & Credit -->
+                <li class="mini-nav-item" id="mini-4">
+                  <a href="javascript:void(0)" data-bs-toggle="tooltip" data-bs-trigger="hover" data-bs-container="body"
+                    data-bs-delay='{"show":120,"hide":0}' data-bs-custom-class="custom-tooltip"
+                    data-bs-placement="right" data-bs-title="Micro-Credit & Banking">
+                    <iconify-icon icon="solar:wallet-money-line-duotone" class="fs-7"></iconify-icon>
+                  </a>
+                </li>
+                <li>
+                  <span class="sidebar-divider lg"></span>
+                </li>
+                <!-- DDU-GKY Skill Mission -->
+                <li class="mini-nav-item" id="mini-5">
+                  <a href="javascript:void(0)" data-bs-toggle="tooltip" data-bs-trigger="hover" data-bs-container="body"
+                    data-bs-delay='{"show":120,"hide":0}' data-bs-custom-class="custom-tooltip"
+                    data-bs-placement="right" data-bs-title="DDU-GKY Skills">
+                    <iconify-icon icon="solar:diploma-line-duotone" class="fs-7"></iconify-icon>
+                  </a>
+                </li>
+                <!-- District Analytics -->
+                <li class="mini-nav-item" id="mini-6">
+                  <a href="javascript:void(0)" data-bs-toggle="tooltip" data-bs-trigger="hover" data-bs-container="body"
+                    data-bs-delay='{"show":120,"hide":0}' data-bs-custom-class="custom-tooltip"
+                    data-bs-placement="right" data-bs-title="District Analytics">
+                    <iconify-icon icon="solar:chart-2-line-duotone" class="fs-7"></iconify-icon>
+                  </a>
+                </li>
+                <!-- Beneficiary Forms -->
+                <li class="mini-nav-item" id="mini-7">
+                  <a href="javascript:void(0)" data-bs-toggle="tooltip" data-bs-trigger="hover" data-bs-container="body"
+                    data-bs-delay='{"show":120,"hide":0}' data-bs-custom-class="custom-tooltip"
+                    data-bs-placement="right" data-bs-title="Registrations & Forms">
+                    <iconify-icon icon="solar:document-add-line-duotone" class="fs-7"></iconify-icon>
+                  </a>
+                </li>
+                <li>
+                  <span class="sidebar-divider lg"></span>
+                </li>
+                <!-- Settings & Customizer -->
+                <li class="mini-nav-item" id="mini-8">
+                  <a href="javascript:void(0)" data-bs-toggle="tooltip" data-bs-trigger="hover" data-bs-container="body"
+                    data-bs-delay='{"show":120,"hide":0}' data-bs-custom-class="custom-tooltip"
+                    data-bs-placement="right" data-bs-title="Appearance Settings" data-bs-target="#offcanvasExample"
+                    onclick="const bsOffcanvas = new bootstrap.Offcanvas(document.getElementById('offcanvasExample')); bsOffcanvas.show();">
+                    <iconify-icon icon="solar:settings-line-duotone" class="fs-7 text-warning"></iconify-icon>
+                  </a>
+                </li>
+              </ul>
+            </div>
+
+            <!-- Submenu Accordion Panel -->
+            <div class="sidebarmenu">
+              <div class="brand-logo d-flex align-items-center nav-logo ps-4">
+                <a href="dashboard.html" class="text-nowrap logo-img d-flex align-items-center gap-2">
+                  <img src="assets/images/logos/palash-logo.webp" alt="Palash Jharkhand Logo"
+                    style="height: 65px; object-fit: contain;" />
+                </a>
+              </div>
+
+              <!-- Menu 1: Dashboards & UI Kit -->
+              <nav class="sidebar-nav d-block" id="menu-right-mini-1" data-simplebar>
+                <ul class="sidebar-menu" id="sidebarnav">
+                  <li class="nav-small-cap">
+                    <span class="hide-menu">JSLPS Dashboards</span>
+                  </li>
+                  <li class="sidebar-item">
+                    <a class="sidebar-link" href="dashboard.html" aria-expanded="false">
+                      <iconify-icon icon="solar:home-smile-angle-line-duotone"
+                        class="fs-6 me-2 menu-icon-indigo"></iconify-icon>
+                      <span class="hide-menu">State Overview</span>
+                    </a>
+                  </li>
+                  <li class="sidebar-item">
+                    <a class="sidebar-link active" href="uiKit.html" aria-expanded="false">
+                      <iconify-icon icon="solar:widget-5-line-duotone"
+                        class="fs-6 me-2 menu-icon-purple"></iconify-icon>
+                      <span class="hide-menu">UI Kit & Components</span>
+                    </a>
+                  </li>
+                  <li><span class="sidebar-divider"></span></li>
+                  <li class="nav-small-cap"><span class="hide-menu">UI Kit Sections</span></li>
+                  <li class="sidebar-item"><a class="sidebar-link" href="#ui-buttons"><i
+                        class="ti ti-click me-2 fs-5 menu-icon-indigo"></i>Buttons & Actions</a></li>
+                  <li class="sidebar-item"><a class="sidebar-link" href="#ui-badges"><i
+                        class="ti ti-badge me-2 fs-5 menu-icon-emerald"></i>Badges & Chips</a></li>
+                  <li class="sidebar-item"><a class="sidebar-link" href="#ui-forms"><i
+                        class="ti ti-forms me-2 fs-5 menu-icon-amber"></i>Form Controls & Inputs</a></li>
+                  <li class="sidebar-item"><a class="sidebar-link" href="#ui-checks"><i
+                        class="ti ti-checkbox me-2 fs-5 menu-icon-cyan"></i>Radios & Checkboxes</a></li>
+                  <li class="sidebar-item"><a class="sidebar-link" href="#ui-dropdowns"><i
+                        class="ti ti-select me-2 fs-5 menu-icon-purple"></i>Dropdowns & Menus</a></li>
+                  <li class="sidebar-item"><a class="sidebar-link" href="#ui-accordions"><i
+                        class="ti ti-layout-navbar-expand me-2 fs-5 menu-icon-rose"></i>Accordions & Collapse</a></li>
+                  <li class="sidebar-item"><a class="sidebar-link" href="#ui-icons"><i
+                        class="ti ti-icons me-2 fs-5 menu-icon-teal"></i>Solar & Tabler Icons</a></li>
+                  <li class="sidebar-item"><a class="sidebar-link" href="#ui-alerts"><i
+                        class="ti ti-bell-ringing me-2 fs-5 menu-icon-orange"></i>Alerts & Modals</a></li>
+                </ul>
+              </nav>
+
+              <!-- Menu 2: Sakhi Mandal -->
+              <nav class="sidebar-nav" id="menu-right-mini-2" data-simplebar>
+                <ul class="sidebar-menu">
+                  <li class="nav-small-cap"><span class="hide-menu">Sakhi Mandal (SHG)</span></li>
+                  <li class="sidebar-item"><a class="sidebar-link" href="dashboard.html"><i
+                        class="ti ti-users me-2 fs-5 menu-icon-emerald"></i>SHG Directory</a></li>
+                  <li class="sidebar-item"><a class="sidebar-link" href="dashboard.html"><i
+                        class="ti ti-building-community me-2 fs-5 menu-icon-indigo"></i>Village Org (VO)</a></li>
+                  <li class="sidebar-item"><a class="sidebar-link" href="dashboard.html"><i
+                        class="ti ti-sitemap me-2 fs-5 menu-icon-purple"></i>Cluster Fed (CLF)</a></li>
+                </ul>
+              </nav>
+
+              <!-- Menu 3: Palash Brand -->
+              <nav class="sidebar-nav" id="menu-right-mini-3" data-simplebar>
+                <ul class="sidebar-menu">
+                  <li class="nav-small-cap"><span class="hide-menu">Palash Brand</span></li>
+                  <li class="sidebar-item"><a class="sidebar-link" href="dashboard.html"><i
+                        class="ti ti-building-store me-2 fs-5 menu-icon-amber"></i>Store Outlets</a></li>
+                  <li class="sidebar-item"><a class="sidebar-link" href="dashboard.html"><i
+                        class="ti ti-box-seam me-2 fs-5 menu-icon-orange"></i>Product Catalog</a></li>
+                </ul>
+              </nav>
+
+              <!-- Menu 4: Financial Inclusion -->
+              <nav class="sidebar-nav" id="menu-right-mini-4" data-simplebar>
+                <ul class="sidebar-menu">
+                  <li class="nav-small-cap"><span class="hide-menu">Credit Linkage</span></li>
+                  <li class="sidebar-item"><a class="sidebar-link" href="dashboard.html"><i
+                        class="ti ti-receipt-2 me-2 fs-5 menu-icon-cyan"></i>Sanction Orders</a></li>
+                  <li class="sidebar-item"><a class="sidebar-link" href="dashboard.html"><i
+                        class="ti ti-arrows-diff me-2 fs-5 menu-icon-purple"></i>Bank Reconciliation</a></li>
+                </ul>
+              </nav>
+
+              <!-- Menu 5: Skills -->
+              <nav class="sidebar-nav" id="menu-right-mini-5" data-simplebar>
+                <ul class="sidebar-menu">
+                  <li class="nav-small-cap"><span class="hide-menu">DDU-GKY Skills</span></li>
+                  <li class="sidebar-item"><a class="sidebar-link" href="dashboard.html"><i
+                        class="ti ti-school me-2 fs-5 menu-icon-purple"></i>Training Centers</a></li>
+                  <li class="sidebar-item"><a class="sidebar-link" href="dashboard.html"><i
+                        class="ti ti-briefcase me-2 fs-5 menu-icon-emerald"></i>Youth Placements</a></li>
+                </ul>
+              </nav>
+
+              <!-- Menu 6: District Analytics -->
+              <nav class="sidebar-nav" id="menu-right-mini-6" data-simplebar>
+                <ul class="sidebar-menu">
+                  <li class="nav-small-cap"><span class="hide-menu">Districts & GIS</span></li>
+                  <li class="sidebar-item"><a class="sidebar-link" href="dashboard.html"><i
+                        class="ti ti-map-2 me-2 fs-5 menu-icon-rose"></i>District Heatmap</a></li>
+                  <li class="sidebar-item"><a class="sidebar-link" href="dashboard.html"><i
+                        class="ti ti-chart-dots me-2 fs-5 menu-icon-indigo"></i>Ranking Index</a></li>
+                </ul>
+              </nav>
+
+              <!-- Menu 7: Forms -->
+              <nav class="sidebar-nav" id="menu-right-mini-7" data-simplebar>
+                <ul class="sidebar-menu">
+                  <li class="nav-small-cap"><span class="hide-menu">Beneficiary Forms</span></li>
+                  <li class="sidebar-item"><a class="sidebar-link" href="dashboard.html"><i
+                        class="ti ti-user-plus me-2 fs-5 menu-icon-teal"></i>New SHG Entry</a></li>
+                  <li class="sidebar-item"><a class="sidebar-link" href="dashboard.html"><i
+                        class="ti ti-file-certificate me-2 fs-5 menu-icon-cyan"></i>Subsidy Claim</a></li>
+                </ul>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+    </aside>
+    <!-- Sidebar End -->
+
+    <!-- =============================================== -->
+    <!-- Page Wrapper -->
+    <!-- =============================================== -->
+    <div class="page-wrapper">
+      <!-- Topbar Header Start -->
+      <header class="topbar">
+        <div class="with-vertical">
+          <nav class="navbar navbar-expand-lg p-0 d-flex align-items-center justify-content-between w-100">
+            <!-- Left: Mobile Sidebar Toggler -->
+            <ul class="navbar-nav align-items-center flex-row">
+              <li class="nav-item d-flex d-xl-none">
+                <a class="nav-link nav-icon-hover-bg rounded-circle sidebartoggler" id="headerCollapseMobile"
+                  href="javascript:void(0)">
+                  <iconify-icon icon="solar:hamburger-menu-line-duotone" class="fs-6"></iconify-icon>
+                </a>
+              </li>
+            </ul>
+
+            <!-- Middle: JSLPS Official Banner Title -->
+            <div class="d-flex align-items-center justify-content-center flex-grow-1 px-3 text-center">
+              <img src="assets/images/logos/header-title.png"
+                alt="Jharkhand State Livelihood Promotion Society - Palash" class="d-none d-md-block"
+                style="height: 65px; max-width: 100%; object-fit: contain;" />
+              <div class="d-md-none text-center lh-1">
+                <span class="fs-3 fw-bold text-success d-block">JSLPS JHARKHAND</span>
+                <span class="fs-1 text-muted">Livelihood Promotion Society</span>
+              </div>
+            </div>
+
+            <!-- Right: Govt of Jharkhand Emblem & User Profile -->
+            <ul class="navbar-nav flex-row ms-auto align-items-center gap-3">
+              <!-- Government of Jharkhand Emblem -->
+              <li class="nav-item d-flex align-items-center gap-2">
+                <img src="assets/images/logos/jharkhand-logo.png" alt="Government of Jharkhand" height="65" width="65"
+                  style="object-fit: contain;" />
+                <div class="d-none d-xxl-block text-start lh-1">
+                  <div class="fs-2 fw-bold text-dark">झारखण्ड सरकार</div>
+                  <span class="fs-1 text-muted">Govt. of Jharkhand</span>
+                </div>
+              </li>
+
+              <!-- Profile Dropdown -->
+              <li class="nav-item dropdown">
+                <a class="nav-link" href="javascript:void(0)" id="profileDrop" data-bs-toggle="dropdown"
+                  aria-expanded="false">
+                  <div class="d-flex align-items-center gap-2 lh-base">
+                    <img src="assets/images/profile/user-1.svg"
+                      class="rounded-circle shadow-sm border border-2 border-success-subtle" width="38" height="38"
+                      alt="Profile" />
+                    <div class="d-none d-lg-block text-start">
+                      <div class="fs-3 fw-bold text-dark lh-1">Dr. Manish Kumar</div>
+                      <span class="fs-1 text-muted">CEO / State Mission Director</span>
+                    </div>
+                    <iconify-icon icon="solar:alt-arrow-down-bold" class="fs-2 text-muted"></iconify-icon>
+                  </div>
+                </a>
+                <div
+                  class="dropdown-menu profile-dropdown dropdown-menu-end dropdown-menu-animate-up shadow-lg border-0 rounded-4"
+                  aria-labelledby="profileDrop" style="min-width: 260px;">
+                  <div class="p-3 border-bottom bg-light-subtle rounded-top-4">
+                    <div class="d-flex align-items-center gap-3">
+                      <img src="assets/images/profile/user-1.svg" class="rounded-circle shadow" width="52" height="52"
+                        alt="Avatar" />
+                      <div>
+                        <h6 class="mb-0 fs-3 fw-bold">Dr. Manish Kumar, IAS</h6>
+                        <span class="badge bg-success-subtle text-success fs-1">Nodal Officer</span>
+                        <p class="mb-0 fs-1 text-muted">jslps.jharkhand@gov.in</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="p-2">
+                    <a href="dashboard.html" class="dropdown-item py-2 px-3 rounded-2 d-flex align-items-center gap-2">
+                      <i class="ti ti-dashboard fs-5 text-primary"></i>
+                      <span>State Mission Dashboard</span>
+                    </a>
+                    <a href="uiKit.html" class="dropdown-item py-2 px-3 rounded-2 d-flex align-items-center gap-2">
+                      <i class="ti ti-palette fs-5 text-purple"></i>
+                      <span>UI Kit & Components</span>
+                    </a>
+                    <a href="javascript:void(0)"
+                      class="dropdown-item py-2 px-3 rounded-2 d-flex align-items-center gap-2"
+                      data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample">
+                      <i class="ti ti-adjustments fs-5 text-warning"></i>
+                      <span>Theme & Layout Settings</span>
+                    </a>
+                    <div class="dropdown-divider my-2"></div>
+                    <a href="javascript:void(0)"
+                      class="dropdown-item py-2 px-3 rounded-2 d-flex align-items-center gap-2 text-danger">
+                      <i class="ti ti-logout fs-5"></i>
+                      <span>Sign Out of Portal</span>
+                    </a>
+                  </div>
+                </div>
+              </li>
+            </ul>
+          </nav>
+        </div>
+      </header>
+      <!-- Topbar Header End -->
+
+      <!-- =============================================== -->
+      <!-- Main Body Container -->
+      <!-- =============================================== -->
+      <div class="body-wrapper">
+        <div class="container-fluid py-4">
+
+          <!-- ------------------------------------------------------------- -->
+          <!-- HERO HEADER FOR UI KIT                                        -->
+          <!-- ------------------------------------------------------------- -->
+          <div class="card bg-primary text-white border-0 shadow-lg mb-4 overflow-hidden position-relative"
+            style="background: linear-gradient(135deg, #4338ca 0%, #3b82f6 50%, #2563eb 100%) !important; border-radius: 20px;">
+            <div class="position-absolute"
+              style="top: -60px; right: -60px; width: 220px; height: 220px; background: radial-gradient(circle, rgba(255,255,255,0.2) 0%, transparent 70%); border-radius: 50%;">
+            </div>
+            <div class="card-body p-4 p-md-5 position-relative z-1">
+              <div class="d-inline-flex align-items-center gap-2 px-3 py-1 bg-white bg-opacity-20 rounded-pill mb-3">
+                <i class="ti ti-palette fs-4"></i>
+                <span class="fs-2 text-white fw-bold">JSLPS Design System v2.0</span>
+              </div>
+              <h2 class="display-6 fw-extrabold text-white mb-2">Complete Component Library & UI Kit</h2>
+              <p class="fs-3 text-white text-opacity-90 mb-4" style="max-width: 720px;">
+                Comprehensive showcase of interactive buttons, form controls, badges, icons, dropdowns, radio & checks,
+                and accordions built with MatDash Bootstrap 5, Blue_Theme, and Solar Duotone Icons.
+              </p>
+              <div class="d-flex flex-wrap gap-2">
+                <a href="dashboard.html"
+                  class="btn btn-warning fw-bold px-4 py-2 rounded-pill shadow-glow-amber d-flex align-items-center gap-2">
+                  <i class="ti ti-arrow-left fs-5"></i>
+                  <span>Back to Live Dashboard</span>
+                </a>
+                <button class="btn btn-outline-light px-4 py-2 rounded-pill d-flex align-items-center gap-2"
+                  onclick="window.scrollTo({top: 0, behavior: 'smooth'})">
+                  <i class="ti ti-arrow-up fs-5"></i>
+                  <span>Back to Top</span>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- ------------------------------------------------------------- -->
+          <!-- QUICK JUMP NAVIGATION PILLS (STICKY SUB-BAR)                  -->
+          <!-- ------------------------------------------------------------- -->
+          <div class="sticky-uikit-nav rounded-4 px-3 shadow-sm">
+            <div class="d-flex align-items-center gap-2 overflow-auto py-1" style="scrollbar-width: thin;">
+              <span class="fs-2 fw-bold text-muted text-uppercase me-2 d-none d-lg-inline">Jump To:</span>
+              <a href="#ui-buttons" class="uikit-nav-pill active"><i class="ti ti-click"></i> Buttons <span
+                  class="badge bg-white text-primary">12+</span></a>
+              <a href="#ui-badges" class="uikit-nav-pill"><i class="ti ti-badge"></i> Badges <span
+                  class="badge bg-primary text-white">10+</span></a>
+              <a href="#ui-forms" class="uikit-nav-pill"><i class="ti ti-forms"></i> Textboxes & Inputs <span
+                  class="badge bg-primary text-white">14+</span></a>
+              <a href="#ui-checks" class="uikit-nav-pill"><i class="ti ti-checkbox"></i> Radios & Switches <span
+                  class="badge bg-primary text-white">10+</span></a>
+              <a href="#ui-dropdowns" class="uikit-nav-pill"><i class="ti ti-select"></i> Dropdowns <span
+                  class="badge bg-primary text-white">6+</span></a>
+              <a href="#ui-accordions" class="uikit-nav-pill"><i class="ti ti-layout-navbar-expand"></i> Accordions
+                <span class="badge bg-primary text-white">4+</span></a>
+              <a href="#ui-icons" class="uikit-nav-pill"><i class="ti ti-icons"></i> Icons Gallery <span
+                  class="badge bg-primary text-white">48+</span></a>
+              <a href="#ui-alerts" class="uikit-nav-pill"><i class="ti ti-bell-ringing"></i> Alerts & Cards</a>
+              <a href="#ui-progress" class="uikit-nav-pill"><i class="ti ti-loader"></i> Progress & Spinners</a>
+              <a href="#ui-modals" class="uikit-nav-pill"><i class="ti ti-browser"></i> Modals & Tooltips</a>
+            </div>
+          </div>
+
+          <!-- ============================================================= -->
+          <!-- 1. BUTTONS & ACTIONS SECTION                                  -->
+          <!-- ============================================================= -->
+          <section id="ui-buttons" class="mb-5">
+            <div class="d-flex align-items-center justify-content-between mb-3">
+              <div>
+                <h4 class="fw-bold text-dark mb-1 d-flex align-items-center gap-2">
+                  <span
+                    class="round-36 bg-primary-subtle text-primary rounded-circle d-flex align-items-center justify-content-center"><i
+                      class="ti ti-click fs-5"></i></span>
+                  Buttons & Action Controls
+                </h4>
+                <p class="fs-2 text-muted mb-0">Solid, outline, subtle, luxury gradient, rounded pill, icon buttons, and
+                  size variations.</p>
+              </div>
+            </div>
+
+            <div class="row g-4">
+              <!-- Solid Theme Buttons -->
+              <div class="col-lg-6">
+                <div class="ui-example-card h-100">
+                  <div class="ui-example-header">
+                    <h6 class="mb-0 fw-bold fs-3 text-dark">Solid Color Buttons</h6>
+                    <span class="badge bg-primary-subtle text-primary fs-1">.btn .btn-[color]</span>
+                  </div>
+                  <div class="ui-example-body">
+                    <p class="fs-2 text-muted mb-3">Standard theme-filled buttons with consistent focus and hover lift
+                      states.</p>
+                    <div class="d-flex flex-wrap gap-2">
+                      <button type="button" class="btn btn-primary">Primary</button>
+                      <button type="button" class="btn btn-secondary">Secondary</button>
+                      <button type="button" class="btn btn-success">Success</button>
+                      <button type="button" class="btn btn-danger">Danger</button>
+                      <button type="button" class="btn btn-warning">Warning</button>
+                      <button type="button" class="btn btn-info">Info</button>
+                      <button type="button" class="btn btn-dark">Dark</button>
+                      <button type="button" class="btn btn-light text-dark">Light</button>
+                      <button type="button" class="btn btn-link">Link Button</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Outline Buttons -->
+              <div class="col-lg-6">
+                <div class="ui-example-card h-100">
+                  <div class="ui-example-header">
+                    <h6 class="mb-0 fw-bold fs-3 text-dark">Outline Buttons</h6>
+                    <span class="badge bg-primary-subtle text-primary fs-1">.btn-outline-[color]</span>
+                  </div>
+                  <div class="ui-example-body">
+                    <p class="fs-2 text-muted mb-3">Subtle outline border buttons ideal for secondary actions.</p>
+                    <div class="d-flex flex-wrap gap-2">
+                      <button type="button" class="btn btn-outline-primary">Primary</button>
+                      <button type="button" class="btn btn-outline-secondary">Secondary</button>
+                      <button type="button" class="btn btn-outline-success">Success</button>
+                      <button type="button" class="btn btn-outline-danger">Danger</button>
+                      <button type="button" class="btn btn-outline-warning">Warning</button>
+                      <button type="button" class="btn btn-outline-info">Info</button>
+                      <button type="button" class="btn btn-outline-dark">Dark</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Soft / Subtle Buttons -->
+              <div class="col-lg-6">
+                <div class="ui-example-card h-100">
+                  <div class="ui-example-header">
+                    <h6 class="mb-0 fw-bold fs-3 text-dark">Soft / Subtle Pastel Buttons</h6>
+                    <span class="badge bg-primary-subtle text-primary fs-1">.bg-[color]-subtle .text-[color]</span>
+                  </div>
+                  <div class="ui-example-body">
+                    <p class="fs-2 text-muted mb-3">Modern UI pastel buttons with translucent backgrounds and vibrant
+                      text.</p>
+                    <div class="d-flex flex-wrap gap-2">
+                      <button type="button" class="btn bg-primary-subtle text-primary fw-semibold">Primary Soft</button>
+                      <button type="button" class="btn bg-success-subtle text-success fw-semibold">Success Soft</button>
+                      <button type="button" class="btn bg-danger-subtle text-danger fw-semibold">Danger Soft</button>
+                      <button type="button" class="btn bg-warning-subtle text-warning fw-semibold">Warning Soft</button>
+                      <button type="button" class="btn bg-info-subtle text-info fw-semibold">Info Soft</button>
+                      <button type="button" class="btn bg-secondary-subtle text-secondary fw-semibold">Secondary
+                        Soft</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Luxury Gradient Buttons -->
+              <div class="col-lg-6">
+                <div class="ui-example-card h-100">
+                  <div class="ui-example-header">
+                    <h6 class="mb-0 fw-bold fs-3 text-dark">Luxury Gradient Action Buttons</h6>
+                    <span class="badge bg-primary-subtle text-primary fs-1">.btn-gradient-[color]</span>
+                  </div>
+                  <div class="ui-example-body">
+                    <p class="fs-2 text-muted mb-3">Vibrant multi-color gradients matching our 4 flagship KPI cards.</p>
+                    <div class="d-flex flex-wrap gap-2">
+                      <button type="button" class="btn btn-gradient-blue fw-bold rounded-pill px-4">Blue Royal</button>
+                      <button type="button" class="btn btn-gradient-emerald fw-bold rounded-pill px-4">Emerald
+                        Glow</button>
+                      <button type="button" class="btn btn-gradient-amber fw-bold rounded-pill px-4">Amber
+                        Sunset</button>
+                      <button type="button" class="btn btn-gradient-purple fw-bold rounded-pill px-4">Royal
+                        Purple</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Button Sizes & Pill Styles -->
+              <div class="col-lg-6">
+                <div class="ui-example-card h-100">
+                  <div class="ui-example-header">
+                    <h6 class="mb-0 fw-bold fs-3 text-dark">Button Sizing & Pill Shape</h6>
+                    <span class="badge bg-primary-subtle text-primary fs-1">.btn-sm, .btn-lg, .rounded-pill</span>
+                  </div>
+                  <div class="ui-example-body">
+                    <div class="d-flex align-items-center flex-wrap gap-3 mb-3">
+                      <button type="button" class="btn btn-sm btn-primary">Small Button</button>
+                      <button type="button" class="btn btn-primary">Regular Button</button>
+                      <button type="button" class="btn btn-lg btn-primary">Large Button</button>
+                    </div>
+                    <div class="d-flex align-items-center flex-wrap gap-3">
+                      <button type="button" class="btn btn-sm btn-outline-success rounded-pill">Small Pill</button>
+                      <button type="button" class="btn btn-success rounded-pill px-4">Regular Pill</button>
+                      <button type="button" class="btn btn-lg btn-outline-primary rounded-pill px-4">Large Pill</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Buttons with Icons & Loading State -->
+              <div class="col-lg-6">
+                <div class="ui-example-card h-100">
+                  <div class="ui-example-header">
+                    <h6 class="mb-0 fw-bold fs-3 text-dark">Icon Buttons & Interactive States</h6>
+                    <span class="badge bg-primary-subtle text-primary fs-1">Icons + Spinner</span>
+                  </div>
+                  <div class="ui-example-body">
+                    <div class="d-flex flex-wrap gap-2 mb-3">
+                      <button type="button" class="btn btn-primary d-flex align-items-center gap-2">
+                        <i class="ti ti-download fs-5"></i>
+                        <span>Download Report</span>
+                      </button>
+                      <button type="button" class="btn btn-success d-flex align-items-center gap-2">
+                        <i class="ti ti-check fs-5"></i>
+                        <span>Approve Sanction</span>
+                      </button>
+                      <button type="button" class="btn btn-outline-danger d-flex align-items-center gap-2">
+                        <i class="ti ti-trash fs-5"></i>
+                        <span>Delete</span>
+                      </button>
+                      <button type="button" class="btn btn-info text-white d-flex align-items-center gap-2"
+                        id="simLoadingBtn" onclick="simulateLoading(this)">
+                        <i class="ti ti-refresh fs-5"></i>
+                        <span>Click for Loading</span>
+                      </button>
+                    </div>
+                    <div class="d-flex align-items-center flex-wrap gap-2">
+                      <span class="fs-2 text-muted me-2">Icon-Only:</span>
+                      <button type="button"
+                        class="btn btn-primary rounded-circle round-40 d-flex align-items-center justify-content-center p-0"><i
+                          class="ti ti-plus fs-5"></i></button>
+                      <button type="button"
+                        class="btn btn-success rounded-circle round-40 d-flex align-items-center justify-content-center p-0"><i
+                          class="ti ti-device-floppy fs-5"></i></button>
+                      <button type="button"
+                        class="btn btn-danger rounded-circle round-40 d-flex align-items-center justify-content-center p-0"><i
+                          class="ti ti-heart fs-5"></i></button>
+                      <button type="button"
+                        class="btn btn-warning rounded-circle round-40 d-flex align-items-center justify-content-center p-0"><i
+                          class="ti ti-star fs-5 text-dark"></i></button>
+                      <button type="button"
+                        class="btn bg-primary-subtle text-primary rounded-3 round-40 d-flex align-items-center justify-content-center p-0"><i
+                          class="ti ti-share fs-5"></i></button>
+                      <button type="button"
+                        class="btn bg-success-subtle text-success rounded-3 round-40 d-flex align-items-center justify-content-center p-0"><i
+                          class="ti ti-settings fs-5"></i></button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <!-- ============================================================= -->
+          <!-- 2. BADGES, CHIPS & STATUS PILLS                               -->
+          <!-- ============================================================= -->
+          <section id="ui-badges" class="mb-5">
+            <div class="d-flex align-items-center justify-content-between mb-3">
+              <div>
+                <h4 class="fw-bold text-dark mb-1 d-flex align-items-center gap-2">
+                  <span
+                    class="round-36 bg-success-subtle text-success rounded-circle d-flex align-items-center justify-content-center"><i
+                      class="ti ti-badge fs-5"></i></span>
+                  Badges, Status Chips & Indicators
+                </h4>
+                <p class="fs-2 text-muted mb-0">Solid badges, subtle soft badges, live radar pulsing indicators, and
+                  outline chips.</p>
+              </div>
+            </div>
+
+            <div class="row g-4">
+              <!-- Solid & Subtle Badges -->
+              <div class="col-lg-6">
+                <div class="ui-example-card h-100">
+                  <div class="ui-example-header">
+                    <h6 class="mb-0 fw-bold fs-3 text-dark">Solid & Subtle Badges</h6>
+                    <span class="badge bg-primary-subtle text-primary fs-1">.badge</span>
+                  </div>
+                  <div class="ui-example-body">
+                    <h6 class="fs-2 text-uppercase text-muted fw-bold mb-2">Solid Colors:</h6>
+                    <div class="d-flex flex-wrap gap-2 mb-4">
+                      <span class="badge bg-primary">Primary</span>
+                      <span class="badge bg-secondary">Secondary</span>
+                      <span class="badge bg-success">Success</span>
+                      <span class="badge bg-danger">Danger</span>
+                      <span class="badge bg-warning text-dark">Warning</span>
+                      <span class="badge bg-info">Info</span>
+                      <span class="badge bg-dark">Dark</span>
+                    </div>
+
+                    <h6 class="fs-2 text-uppercase text-muted fw-bold mb-2">Subtle Soft Pastel Badges:</h6>
+                    <div class="d-flex flex-wrap gap-2">
+                      <span class="badge bg-primary-subtle text-primary">Primary Soft</span>
+                      <span class="badge bg-success-subtle text-success">Approved / Active</span>
+                      <span class="badge bg-danger-subtle text-danger">Rejected</span>
+                      <span class="badge bg-warning-subtle text-warning">Pending Review</span>
+                      <span class="badge bg-info-subtle text-info">Processing</span>
+                      <span class="badge bg-secondary-subtle text-secondary">Draft</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Rounded Pill & Live Radar Status Badges -->
+              <div class="col-lg-6">
+                <div class="ui-example-card h-100">
+                  <div class="ui-example-header">
+                    <h6 class="mb-0 fw-bold fs-3 text-dark">Live Radar & Status Indicators</h6>
+                    <span class="badge bg-primary-subtle text-primary fs-1">Live Beacons</span>
+                  </div>
+                  <div class="ui-example-body">
+                    <h6 class="fs-2 text-uppercase text-muted fw-bold mb-2">Pulsing Radar Status Indicators:</h6>
+                    <div class="d-flex flex-wrap gap-3 mb-4">
+                      <div
+                        class="d-inline-flex align-items-center gap-2 px-3 py-1 bg-success-subtle text-success rounded-pill border border-success-subtle fs-2 fw-semibold">
+                        <span class="radar-live-beacon"></span>
+                        <span>NIC Live Sync Online</span>
+                      </div>
+                      <div
+                        class="d-inline-flex align-items-center gap-2 px-3 py-1 bg-warning-subtle text-warning rounded-pill border border-warning-subtle fs-2 fw-semibold">
+                        <span
+                          style="width: 8px; height: 8px; border-radius: 50%; background: #f59e0b; display: inline-block;"></span>
+                        <span>Under DBT Audit</span>
+                      </div>
+                      <div
+                        class="d-inline-flex align-items-center gap-2 px-3 py-1 bg-danger-subtle text-danger rounded-pill border border-danger-subtle fs-2 fw-semibold">
+                        <span
+                          style="width: 8px; height: 8px; border-radius: 50%; background: #ef4444; display: inline-block;"></span>
+                        <span>Gateway Offline</span>
+                      </div>
+                    </div>
+
+                    <h6 class="fs-2 text-uppercase text-muted fw-bold mb-2">Outline & Pill Chips:</h6>
+                    <div class="d-flex flex-wrap gap-2">
+                      <span class="badge rounded-pill border border-primary text-primary px-3 py-2">SHG Category</span>
+                      <span class="badge rounded-pill border border-success text-success px-3 py-2">Credit
+                        Disbursed</span>
+                      <span class="badge rounded-pill border border-warning text-warning px-3 py-2">Palash Marts</span>
+                      <span class="badge rounded-pill border border-danger text-danger px-3 py-2">High NPA Zone</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <!-- ============================================================= -->
+          <!-- 3. FORM CONTROLS & TEXTBOXES                                  -->
+          <!-- ============================================================= -->
+          <section id="ui-forms" class="mb-5">
+            <div class="d-flex align-items-center justify-content-between mb-3">
+              <div>
+                <h4 class="fw-bold text-dark mb-1 d-flex align-items-center gap-2">
+                  <span
+                    class="round-36 bg-amber-subtle text-warning rounded-circle d-flex align-items-center justify-content-center"
+                    style="background: rgba(245, 158, 11, 0.15);"><i class="ti ti-forms fs-5"></i></span>
+                  Form Controls, Textboxes & Input Groups
+                </h4>
+                <p class="fs-2 text-muted mb-0">Standard textboxes, floating labels, input addons, password toggle,
+                  validation states, and selects.</p>
+              </div>
+            </div>
+
+            <div class="row g-4">
+              <!-- Standard Textboxes & Input Groups -->
+              <div class="col-lg-6">
+                <div class="ui-example-card h-100">
+                  <div class="ui-example-header">
+                    <h6 class="mb-0 fw-bold fs-3 text-dark">Standard Text Inputs & Addons</h6>
+                    <span class="badge bg-primary-subtle text-primary fs-1">.form-control</span>
+                  </div>
+                  <div class="ui-example-body">
+                    <!-- Standard Input -->
+                    <div class="mb-3">
+                      <label class="form-label fs-2 fw-semibold text-dark">Full Name (SHG President)</label>
+                      <input type="text" class="form-control" placeholder="e.g. Shanti Devi" />
+                      <div class="form-text fs-1 text-muted">As registered in Aadhaar / NRLM database.</div>
+                    </div>
+
+                    <!-- Input with Icon Prepend -->
+                    <div class="mb-3">
+                      <label class="form-label fs-2 fw-semibold text-dark">Official Email Address</label>
+                      <div class="input-group">
+                        <span class="input-group-text bg-light"><i class="ti ti-mail fs-5 text-muted"></i></span>
+                        <input type="email" class="form-control" placeholder="name@jslps.jharkhand.gov.in" />
+                      </div>
+                    </div>
+
+                    <!-- Input with Currency Addon -->
+                    <div class="mb-3">
+                      <label class="form-label fs-2 fw-semibold text-dark">Credit Sanction Amount</label>
+                      <div class="input-group">
+                        <span class="input-group-text bg-light fw-bold text-primary">₹</span>
+                        <input type="number" class="form-control" placeholder="5,00,000" />
+                        <span class="input-group-text bg-light">INR</span>
+                      </div>
+                    </div>
+
+                    <!-- Interactive Password Input with Show/Hide -->
+                    <div class="mb-3">
+                      <label class="form-label fs-2 fw-semibold text-dark">Portal Security Password</label>
+                      <div class="input-group">
+                        <input type="password" class="form-control" id="uiKitPasswordInput" value="Jslps@2026State" />
+                        <button class="btn btn-outline-secondary" type="button" onclick="togglePasswordVisibility()">
+                          <i class="ti ti-eye fs-5" id="passwordEyeIcon"></i>
+                        </button>
+                      </div>
+                      <div class="form-text fs-1 text-muted">Click the eye icon to test show/hide toggle.</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Floating Labels & Validation States -->
+              <div class="col-lg-6">
+                <div class="ui-example-card h-100">
+                  <div class="ui-example-header">
+                    <h6 class="mb-0 fw-bold fs-3 text-dark">Floating Labels & Validation States</h6>
+                    <span class="badge bg-primary-subtle text-primary fs-1">.form-floating</span>
+                  </div>
+                  <div class="ui-example-body">
+                    <!-- Floating Labels -->
+                    <div class="form-floating mb-3">
+                      <input type="text" class="form-control" id="floatingSHG" placeholder="SHG Name"
+                        value="Maa Durga Sakhi Mandal" />
+                      <label for="floatingSHG">Floating Label: SHG Group Name</label>
+                    </div>
+
+                    <!-- Valid State -->
+                    <div class="mb-3">
+                      <label class="form-label fs-2 fw-semibold text-dark">Aadhaar Verified ID (Valid State)</label>
+                      <input type="text" class="form-control is-valid" value="XXXX-XXXX-8921" />
+                      <div class="valid-feedback fs-1">✓ UIDAI Aadhaar verification successful!</div>
+                    </div>
+
+                    <!-- Invalid State -->
+                    <div class="mb-3">
+                      <label class="form-label fs-2 fw-semibold text-dark">Bank IFSC Code (Error State)</label>
+                      <input type="text" class="form-control is-invalid" value="SBIN000" />
+                      <div class="invalid-feedback fs-1">✗ Invalid IFSC code! 11 alphanumeric characters required.</div>
+                    </div>
+
+                    <!-- Disabled & Readonly -->
+                    <div class="row g-2">
+                      <div class="col-sm-6 mb-3">
+                        <label class="form-label fs-2 fw-semibold text-dark">Disabled Input</label>
+                        <input type="text" class="form-control" value="State Code: JH-20" disabled />
+                      </div>
+                      <div class="col-sm-6 mb-3">
+                        <label class="form-label fs-2 fw-semibold text-dark">Readonly Input</label>
+                        <input type="text" class="form-control" value="NRLM-MIS-ACTIVE" readonly />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Selects, Textareas & File Upload -->
+              <div class="col-12">
+                <div class="ui-example-card">
+                  <div class="ui-example-header">
+                    <h6 class="mb-0 fw-bold fs-3 text-dark">Select Dropdowns, Textareas, File Upload & Range</h6>
+                    <span class="badge bg-primary-subtle text-primary fs-1">Advanced Controls</span>
+                  </div>
+                  <div class="ui-example-body">
+                    <div class="row g-4">
+                      <!-- Selects -->
+                      <div class="col-md-4">
+                        <label class="form-label fs-2 fw-semibold text-dark">District Selection</label>
+                        <select class="form-select mb-3">
+                          <option selected>Choose District...</option>
+                          <option value="1">Ranchi (राँची)</option>
+                          <option value="2">Bokaro (बोकारो)</option>
+                          <option value="3">Dhanbad (धनबाद)</option>
+                          <option value="4">East Singhbhum (पूर्वी सिंहभूम)</option>
+                          <option value="5">Dumka (दुमका)</option>
+                        </select>
+
+                        <label class="form-label fs-2 fw-semibold text-dark">Small Select (.form-select-sm)</label>
+                        <select class="form-select form-select-sm">
+                          <option>DAY-NRLM Aajeevika</option>
+                          <option>MKSP Agriculture</option>
+                          <option>DDU-GKY Skill Mission</option>
+                        </select>
+                      </div>
+
+                      <!-- Textarea -->
+                      <div class="col-md-4">
+                        <label class="form-label fs-2 fw-semibold text-dark">Village Livelihood Project
+                          Description</label>
+                        <textarea class="form-control" rows="4"
+                          placeholder="Enter purpose of micro-grant, target women beneficiaries, and expected monthly revenue..."></textarea>
+                      </div>
+
+                      <!-- File Upload & Range Slider -->
+                      <div class="col-md-4">
+                        <label class="form-label fs-2 fw-semibold text-dark">Upload Resolution Document (PDF /
+                          Image)</label>
+                        <input class="form-control mb-3" type="file" id="formFile" />
+
+                        <div class="d-flex align-items-center justify-content-between">
+                          <label class="form-label fs-2 fw-semibold text-dark mb-1">Target Achievement Slider</label>
+                          <span class="badge bg-primary text-white" id="sliderValDisplay">75%</span>
+                        </div>
+                        <input type="range" class="form-range" min="0" max="100" value="75" id="uiKitRangeSlider"
+                          oninput="document.getElementById('sliderValDisplay').textContent = this.value + '%'" />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <!-- ============================================================= -->
+          <!-- 4. RADIOS, CHECKBOXES & TOGGLE SWITCHES                       -->
+          <!-- ============================================================= -->
+          <section id="ui-checks" class="mb-5">
+            <div class="d-flex align-items-center justify-content-between mb-3">
+              <div>
+                <h4 class="fw-bold text-dark mb-1 d-flex align-items-center gap-2">
+                  <span
+                    class="round-36 bg-info-subtle text-info rounded-circle d-flex align-items-center justify-content-center"><i
+                      class="ti ti-checkbox fs-5"></i></span>
+                  Checkboxes, Radio Buttons & Toggle Switches
+                </h4>
+                <p class="fs-2 text-muted mb-0">Modern checkboxes, radio options, button groups, and smooth toggle
+                  switches.</p>
+              </div>
+            </div>
+
+            <div class="row g-4">
+              <!-- Checkboxes -->
+              <div class="col-lg-4">
+                <div class="ui-example-card h-100">
+                  <div class="ui-example-header">
+                    <h6 class="mb-0 fw-bold fs-3 text-dark">Modern Checkboxes</h6>
+                    <span class="badge bg-primary-subtle text-primary fs-1">.form-check-input</span>
+                  </div>
+                  <div class="ui-example-body">
+                    <div class="form-check mb-3">
+                      <input class="form-check-input" type="checkbox" value="" id="check1" checked />
+                      <label class="form-check-label fs-2 text-dark" for="check1">
+                        Active Sakhi Mandal Member
+                      </label>
+                    </div>
+                    <div class="form-check mb-3">
+                      <input class="form-check-input" type="checkbox" value="" id="check2" checked />
+                      <label class="form-check-label fs-2 text-dark" for="check2">
+                        Bank A/C Linked with Aadhaar
+                      </label>
+                    </div>
+                    <div class="form-check mb-3">
+                      <input class="form-check-input" type="checkbox" value="" id="check3" />
+                      <label class="form-check-label fs-2 text-dark" for="check3">
+                        Palash Brand Mart Vendor
+                      </label>
+                    </div>
+                    <div class="form-check mb-3">
+                      <input class="form-check-input" type="checkbox" value="" id="check4" disabled />
+                      <label class="form-check-label fs-2 text-muted" for="check4">
+                        Disabled Option
+                      </label>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Radio Buttons -->
+              <div class="col-lg-4">
+                <div class="ui-example-card h-100">
+                  <div class="ui-example-header">
+                    <h6 class="mb-0 fw-bold fs-3 text-dark">Radio Buttons</h6>
+                    <span class="badge bg-primary-subtle text-primary fs-1">type="radio"</span>
+                  </div>
+                  <div class="ui-example-body">
+                    <div class="form-check mb-3">
+                      <input class="form-check-input" type="radio" name="flexRadioDefault" id="radio1" checked />
+                      <label class="form-check-label fs-2 text-dark" for="radio1">
+                        Individual Bank Linkage
+                      </label>
+                    </div>
+                    <div class="form-check mb-3">
+                      <input class="form-check-input" type="radio" name="flexRadioDefault" id="radio2" />
+                      <label class="form-check-label fs-2 text-dark" for="radio2">
+                        Cluster Level Federation (CLF) Grant
+                      </label>
+                    </div>
+                    <div class="form-check mb-3">
+                      <input class="form-check-input" type="radio" name="flexRadioDefault" id="radio3" />
+                      <label class="form-check-label fs-2 text-dark" for="radio3">
+                        Phulo Jhano Livelihood Subsidy
+                      </label>
+                    </div>
+                    <div class="form-check mb-3">
+                      <input class="form-check-input" type="radio" name="flexRadioDefault" id="radio4" disabled />
+                      <label class="form-check-label fs-2 text-muted" for="radio4">
+                        Disabled Loan Option
+                      </label>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Toggle Switches -->
+              <div class="col-lg-4">
+                <div class="ui-example-card h-100">
+                  <div class="ui-example-header">
+                    <h6 class="mb-0 fw-bold fs-3 text-dark">Toggle Switches</h6>
+                    <span class="badge bg-primary-subtle text-primary fs-1">.form-switch</span>
+                  </div>
+                  <div class="ui-example-body">
+                    <div class="form-check form-switch mb-3">
+                      <input class="form-check-input" type="checkbox" role="switch" id="switch1" checked />
+                      <label class="form-check-label fs-2 text-dark" for="switch1">
+                        Auto-Sync with NIC Gateway
+                      </label>
+                    </div>
+                    <div class="form-check form-switch mb-3">
+                      <input class="form-check-input" type="checkbox" role="switch" id="switch2" checked />
+                      <label class="form-check-label fs-2 text-dark" for="switch2">
+                        SMS Alerts for Disbursals
+                      </label>
+                    </div>
+                    <div class="form-check form-switch mb-3">
+                      <input class="form-check-input" type="checkbox" role="switch" id="switch3" />
+                      <label class="form-check-label fs-2 text-dark" for="switch3">
+                        Two-Factor Biometric Auth
+                      </label>
+                    </div>
+                    <div class="form-check form-switch mb-3">
+                      <input class="form-check-input" type="checkbox" role="switch" id="switch4" disabled />
+                      <label class="form-check-label fs-2 text-muted" for="switch4">
+                        Maintenance Mode (Locked)
+                      </label>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Button Style Radios & Checkbox Group -->
+              <div class="col-12">
+                <div class="ui-example-card">
+                  <div class="ui-example-header">
+                    <h6 class="mb-0 fw-bold fs-3 text-dark">Segmented Button Checkboxes & Radios</h6>
+                    <span class="badge bg-primary-subtle text-primary fs-1">.btn-check</span>
+                  </div>
+                  <div class="ui-example-body">
+                    <div class="row align-items-center g-4">
+                      <div class="col-md-6">
+                        <label class="form-label fs-2 fw-semibold text-dark mb-2">Reporting Period (Radio
+                          Group):</label>
+                        <div class="btn-group w-100" role="group">
+                          <input type="radio" class="btn-check" name="btnradio" id="btnradio1" autocomplete="off"
+                            checked />
+                          <label class="btn btn-outline-primary" for="btnradio1">Monthly</label>
+
+                          <input type="radio" class="btn-check" name="btnradio" id="btnradio2" autocomplete="off" />
+                          <label class="btn btn-outline-primary" for="btnradio2">Quarterly</label>
+
+                          <input type="radio" class="btn-check" name="btnradio" id="btnradio3" autocomplete="off" />
+                          <label class="btn btn-outline-primary" for="btnradio3">Annual FY 25-26</label>
+                        </div>
+                      </div>
+
+                      <div class="col-md-6">
+                        <label class="form-label fs-2 fw-semibold text-dark mb-2">Display Filters (Checkbox
+                          Group):</label>
+                        <div class="btn-group w-100" role="group">
+                          <input type="checkbox" class="btn-check" id="btncheck1" autocomplete="off" checked />
+                          <label class="btn btn-outline-success" for="btncheck1">Active SHGs</label>
+
+                          <input type="checkbox" class="btn-check" id="btncheck2" autocomplete="off" checked />
+                          <label class="btn btn-outline-success" for="btncheck2">Palash Marts</label>
+
+                          <input type="checkbox" class="btn-check" id="btncheck3" autocomplete="off" />
+                          <label class="btn btn-outline-success" for="btncheck3">DDU-GKY</label>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <!-- ============================================================= -->
+          <!-- 5. DROPDOWNS & ACTION MENUS                                   -->
+          <!-- ============================================================= -->
+          <section id="ui-dropdowns" class="mb-5">
+            <div class="d-flex align-items-center justify-content-between mb-3">
+              <div>
+                <h4 class="fw-bold text-dark mb-1 d-flex align-items-center gap-2">
+                  <span
+                    class="round-36 bg-purple-subtle text-purple rounded-circle d-flex align-items-center justify-content-center"
+                    style="background: rgba(139, 92, 246, 0.15);"><i class="ti ti-select fs-5"></i></span>
+                  Dropdowns & Action Menus
+                </h4>
+                <p class="fs-2 text-muted mb-0">Basic dropdowns, split buttons, rich dropdowns with icons, badges, and
+                  directions.</p>
+              </div>
+            </div>
+
+            <div class="row g-4">
+              <div class="col-lg-6">
+                <div class="ui-example-card h-100">
+                  <div class="ui-example-header">
+                    <h6 class="mb-0 fw-bold fs-3 text-dark">Standard & Split Button Dropdowns</h6>
+                    <span class="badge bg-primary-subtle text-primary fs-1">.dropdown</span>
+                  </div>
+                  <div class="ui-example-body">
+                    <p class="fs-2 text-muted mb-3">Trigger dropdown menus with single button or split actions.</p>
+                    <div class="d-flex flex-wrap gap-3">
+                      <!-- Primary Dropdown -->
+                      <div class="dropdown">
+                        <button class="btn btn-primary dropdown-toggle" type="button" data-bs-toggle="dropdown"
+                          aria-expanded="false">
+                          Select District
+                        </button>
+                        <ul class="dropdown-menu shadow border-0 rounded-3">
+                          <li><a class="dropdown-item" href="javascript:void(0)">Ranchi Central</a></li>
+                          <li><a class="dropdown-item" href="javascript:void(0)">Bokaro Steel City</a></li>
+                          <li><a class="dropdown-item" href="javascript:void(0)">Dhanbad Coalfield</a></li>
+                          <li>
+                            <hr class="dropdown-divider" />
+                          </li>
+                          <li><a class="dropdown-item text-primary fw-semibold" href="javascript:void(0)">View All 24
+                              Districts</a></li>
+                        </ul>
+                      </div>
+
+                      <!-- Split Button Dropdown -->
+                      <div class="btn-group">
+                        <button type="button" class="btn btn-success">Export Data</button>
+                        <button type="button" class="btn btn-success dropdown-toggle dropdown-toggle-split"
+                          data-bs-toggle="dropdown" aria-expanded="false">
+                          <span class="visually-hidden">Toggle Dropdown</span>
+                        </button>
+                        <ul class="dropdown-menu shadow border-0 rounded-3">
+                          <li><a class="dropdown-item" href="javascript:void(0)"><i
+                                class="ti ti-file-spreadsheet me-2 text-success"></i>Download Excel (.xlsx)</a></li>
+                          <li><a class="dropdown-item" href="javascript:void(0)"><i
+                                class="ti ti-file-text me-2 text-danger"></i>Export PDF Brief</a></li>
+                          <li><a class="dropdown-item" href="javascript:void(0)"><i
+                                class="ti ti-code me-2 text-info"></i>API JSON Feed</a></li>
+                        </ul>
+                      </div>
+
+                      <!-- Outline Dropdown -->
+                      <div class="dropdown">
+                        <button class="btn btn-outline-secondary dropdown-toggle" type="button"
+                          data-bs-toggle="dropdown" aria-expanded="false">
+                          Status Filter
+                        </button>
+                        <ul class="dropdown-menu shadow border-0 rounded-3">
+                          <li><a class="dropdown-item" href="javascript:void(0)">Active Only</a></li>
+                          <li><a class="dropdown-item" href="javascript:void(0)">Pending Approval</a></li>
+                          <li><a class="dropdown-item" href="javascript:void(0)">Audited & Closed</a></li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-lg-6">
+                <div class="ui-example-card h-100">
+                  <div class="ui-example-header">
+                    <h6 class="mb-0 fw-bold fs-3 text-dark">Rich Dropdown with Icons & Badges</h6>
+                    <span class="badge bg-primary-subtle text-primary fs-1">Custom Items</span>
+                  </div>
+                  <div class="ui-example-body">
+                    <p class="fs-2 text-muted mb-3">Rich styling with icons, headers, counters, and danger zones.</p>
+                    <div class="d-flex flex-wrap gap-3">
+                      <!-- Action Menu Dropdown -->
+                      <div class="dropdown">
+                        <button
+                          class="btn btn-primary rounded-pill px-4 dropdown-toggle d-flex align-items-center gap-2"
+                          type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                          <i class="ti ti-adjustments fs-5"></i>
+                          <span>Manage Scheme</span>
+                        </button>
+                        <ul class="dropdown-menu shadow-lg border-0 rounded-4 p-2" style="min-width: 240px;">
+                          <li>
+                            <h6 class="dropdown-header text-uppercase fs-1 text-muted fw-bold">Operations</h6>
+                          </li>
+                          <li>
+                            <a class="dropdown-item rounded-2 py-2 d-flex align-items-center justify-content-between"
+                              href="javascript:void(0)">
+                              <span class="d-flex align-items-center gap-2"><i
+                                  class="ti ti-user-plus text-primary fs-5"></i> Enroll Beneficiary</span>
+                              <span class="badge bg-primary-subtle text-primary">New</span>
+                            </a>
+                          </li>
+                          <li>
+                            <a class="dropdown-item rounded-2 py-2 d-flex align-items-center justify-content-between"
+                              href="javascript:void(0)">
+                              <span class="d-flex align-items-center gap-2"><i
+                                  class="ti ti-credit-card text-success fs-5"></i> Disburse Credit</span>
+                              <span class="badge bg-success-subtle text-success">Fast</span>
+                            </a>
+                          </li>
+                          <li>
+                            <a class="dropdown-item rounded-2 py-2 d-flex align-items-center gap-2"
+                              href="javascript:void(0)">
+                              <i class="ti ti-printer text-info fs-5"></i> Print Circular
+                            </a>
+                          </li>
+                          <li>
+                            <hr class="dropdown-divider my-2" />
+                          </li>
+                          <li>
+                            <a class="dropdown-item rounded-2 py-2 text-danger d-flex align-items-center gap-2"
+                              href="javascript:void(0)">
+                              <i class="ti ti-ban fs-5"></i> Revoke Sanction
+                            </a>
+                          </li>
+                        </ul>
+                      </div>
+
+                      <!-- Directions Dropend -->
+                      <div class="btn-group dropend">
+                        <button type="button" class="btn btn-outline-primary dropdown-toggle" data-bs-toggle="dropdown"
+                          aria-expanded="false">
+                          Dropend (Right)
+                        </button>
+                        <ul class="dropdown-menu shadow border-0 rounded-3">
+                          <li><a class="dropdown-item" href="javascript:void(0)">Ranchi North</a></li>
+                          <li><a class="dropdown-item" href="javascript:void(0)">Ranchi South</a></li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <!-- ============================================================= -->
+          <!-- 6. ACCORDIONS & COLLAPSIBLE PANELS                            -->
+          <!-- ============================================================= -->
+          <section id="ui-accordions" class="mb-5">
+            <div class="d-flex align-items-center justify-content-between mb-3">
+              <div>
+                <h4 class="fw-bold text-dark mb-1 d-flex align-items-center gap-2">
+                  <span
+                    class="round-36 bg-rose-subtle text-danger rounded-circle d-flex align-items-center justify-content-center"
+                    style="background: rgba(244, 63, 94, 0.15);"><i class="ti ti-layout-navbar-expand fs-5"></i></span>
+                  Accordions & Collapsible Cards
+                </h4>
+                <p class="fs-2 text-muted mb-0">Standard accordions, borderless flush panels, and colorful card-style
+                  expansion items.</p>
+              </div>
+            </div>
+
+            <div class="row g-4">
+              <!-- Standard Accordion -->
+              <div class="col-lg-6">
+                <div class="ui-example-card h-100">
+                  <div class="ui-example-header">
+                    <h6 class="mb-0 fw-bold fs-3 text-dark">Classic Styled Accordion</h6>
+                    <span class="badge bg-primary-subtle text-primary fs-1">.accordion</span>
+                  </div>
+                  <div class="ui-example-body">
+                    <div class="accordion" id="accordionExample">
+                      <div class="accordion-item border rounded-3 mb-2 overflow-hidden">
+                        <h2 class="accordion-header" id="headingOne">
+                          <button class="accordion-button fw-bold fs-3 text-dark bg-light-subtle" type="button"
+                            data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true"
+                            aria-controls="collapseOne">
+                            <i class="ti ti-users text-primary fs-5 me-2"></i> 1. What is a Sakhi Mandal (SHG)?
+                          </button>
+                        </h2>
+                        <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne"
+                          data-bs-parent="#accordionExample">
+                          <div class="accordion-body fs-2 text-muted lh-base">
+                            Sakhi Mandals are Self-Help Groups formed by 10 to 20 rural women in Jharkhand to promote
+                            thrift, mutual aid, and sustainable micro-livelihoods under DAY-NRLM.
+                          </div>
+                        </div>
+                      </div>
+
+                      <div class="accordion-item border rounded-3 mb-2 overflow-hidden">
+                        <h2 class="accordion-header" id="headingTwo">
+                          <button class="accordion-button collapsed fw-bold fs-3 text-dark bg-light-subtle"
+                            type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false"
+                            aria-controls="collapseTwo">
+                            <i class="ti ti-building-store text-warning fs-5 me-2"></i> 2. How do Palash Marts operate?
+                          </button>
+                        </h2>
+                        <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo"
+                          data-bs-parent="#accordionExample">
+                          <div class="accordion-body fs-2 text-muted lh-base">
+                            Palash is Jharkhand's state umbrella brand marketing authentic rural products made by women
+                            producers—including cold-pressed mustard oil, honey, and herbal items.
+                          </div>
+                        </div>
+                      </div>
+
+                      <div class="accordion-item border rounded-3 overflow-hidden">
+                        <h2 class="accordion-header" id="headingThree">
+                          <button class="accordion-button collapsed fw-bold fs-3 text-dark bg-light-subtle"
+                            type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree"
+                            aria-expanded="false" aria-controls="collapseThree">
+                            <i class="ti ti-currency-rupee text-success fs-5 me-2"></i> 3. Bank Credit Disbursal Limits
+                          </button>
+                        </h2>
+                        <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree"
+                          data-bs-parent="#accordionExample">
+                          <div class="accordion-body fs-2 text-muted lh-base">
+                            First-tier SHG linkage allows ₹1.5 Lakh, escalating up to ₹6 Lakh for Tier-4 federations
+                            with interest subvention down to 7% annual rate.
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Flush Accordion -->
+              <div class="col-lg-6">
+                <div class="ui-example-card h-100">
+                  <div class="ui-example-header">
+                    <h6 class="mb-0 fw-bold fs-3 text-dark">Flush Accordion (Borderless)</h6>
+                    <span class="badge bg-primary-subtle text-primary fs-1">.accordion-flush</span>
+                  </div>
+                  <div class="ui-example-body">
+                    <div class="accordion accordion-flush" id="accordionFlushExample">
+                      <div class="accordion-item">
+                        <h2 class="accordion-header" id="flush-headingOne">
+                          <button class="accordion-button collapsed fw-bold fs-3 text-dark" type="button"
+                            data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false"
+                            aria-controls="flush-collapseOne">
+                            <span class="badge bg-success-subtle text-success me-2 px-2">NRLM</span> Direct Benefit
+                            Transfer (DBT) Flow
+                          </button>
+                        </h2>
+                        <div id="flush-collapseOne" class="accordion-collapse collapse"
+                          aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
+                          <div class="accordion-body fs-2 text-muted">
+                            All community investment funds (CIF) and revolving funds are directly credited into
+                            digitized bank accounts validated via PFMS Jharkhand gateway.
+                          </div>
+                        </div>
+                      </div>
+
+                      <div class="accordion-item">
+                        <h2 class="accordion-header" id="flush-headingTwo">
+                          <button class="accordion-button collapsed fw-bold fs-3 text-dark" type="button"
+                            data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo" aria-expanded="false"
+                            aria-controls="flush-collapseTwo">
+                            <span class="badge bg-primary-subtle text-primary me-2 px-2">DDU-GKY</span> Youth Employment
+                            Guarantee
+                          </button>
+                        </h2>
+                        <div id="flush-collapseTwo" class="accordion-collapse collapse"
+                          aria-labelledby="flush-headingTwo" data-bs-parent="#accordionFlushExample">
+                          <div class="accordion-body fs-2 text-muted">
+                            Minimum 70% placement mandate is maintained across all 86 residential training partners for
+                            skill-certified rural youth candidates.
+                          </div>
+                        </div>
+                      </div>
+
+                      <div class="accordion-item">
+                        <h2 class="accordion-header" id="flush-headingThree">
+                          <button class="accordion-button collapsed fw-bold fs-3 text-dark" type="button"
+                            data-bs-toggle="collapse" data-bs-target="#flush-collapseThree" aria-expanded="false"
+                            aria-controls="flush-collapseThree">
+                            <span class="badge bg-warning-subtle text-warning me-2 px-2">AUDIT</span> Social Audit &
+                            Transparency
+                          </button>
+                        </h2>
+                        <div id="flush-collapseThree" class="accordion-collapse collapse"
+                          aria-labelledby="flush-headingThree" data-bs-parent="#accordionFlushExample">
+                          <div class="accordion-body fs-2 text-muted">
+                            Gram Sabha conducted bi-annually ensures full community oversight of loan disbursements,
+                            repayment schedules, and beneficiary selection.
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <!-- ============================================================= -->
+          <!-- 7. ICONS SHOWCASE (SOLAR & TABLER ICONS)                       -->
+          <!-- ============================================================= -->
+          <section id="ui-icons" class="mb-5">
+            <div class="d-flex align-items-center justify-content-between mb-3 flex-wrap gap-2">
+              <div>
+                <h4 class="fw-bold text-dark mb-1 d-flex align-items-center gap-2">
+                  <span
+                    class="round-36 bg-teal-subtle text-teal rounded-circle d-flex align-items-center justify-content-center"
+                    style="background: rgba(20, 184, 166, 0.15);"><i class="ti ti-icons fs-5"></i></span>
+                  Solar Duotone & Tabler Icons Gallery
+                </h4>
+                <p class="fs-2 text-muted mb-0">Hover to see tactile spring bounce animations! Click any card to copy
+                  code to clipboard.</p>
+              </div>
+
+              <!-- Interactive Icon Search Box -->
+              <div class="d-flex align-items-center">
+                <div class="input-group input-group-sm" style="max-width: 260px;">
+                  <span class="input-group-text bg-white border-end-0"><i class="ti ti-search text-muted"></i></span>
+                  <input type="text" class="form-control border-start-0" id="iconSearchInput"
+                    placeholder="Filter icons..." onkeyup="filterIcons(this.value)" />
+                </div>
+              </div>
+            </div>
+
+            <div class="ui-example-card">
+              <div class="ui-example-header">
+                <h6 class="mb-0 fw-bold fs-3 text-dark">Solar Duotone Icons Grid</h6>
+                <span class="badge bg-primary-subtle text-primary fs-1">Click card to copy</span>
+              </div>
+              <div class="ui-example-body">
+                <div class="row g-3" id="iconGalleryGrid">
+                  <!-- Icon Items -->
+                  <div class="col-6 col-sm-4 col-md-3 col-lg-2 icon-item"
+                    onclick="copyIconCode('solar:home-smile-angle-line-duotone')">
+                    <div class="icon-card">
+                      <iconify-icon icon="solar:home-smile-angle-line-duotone" class="text-primary"></iconify-icon>
+                      <div class="icon-title">home-smile</div>
+                    </div>
+                  </div>
+                  <div class="col-6 col-sm-4 col-md-3 col-lg-2 icon-item"
+                    onclick="copyIconCode('solar:layers-line-duotone')">
+                    <div class="icon-card">
+                      <iconify-icon icon="solar:layers-line-duotone" class="text-primary"></iconify-icon>
+                      <div class="icon-title">layers</div>
+                    </div>
+                  </div>
+                  <div class="col-6 col-sm-4 col-md-3 col-lg-2 icon-item"
+                    onclick="copyIconCode('solar:users-group-rounded-line-duotone')">
+                    <div class="icon-card">
+                      <iconify-icon icon="solar:users-group-rounded-line-duotone" class="text-success"></iconify-icon>
+                      <div class="icon-title">users-group</div>
+                    </div>
+                  </div>
+                  <div class="col-6 col-sm-4 col-md-3 col-lg-2 icon-item"
+                    onclick="copyIconCode('solar:shop-2-line-duotone')">
+                    <div class="icon-card">
+                      <iconify-icon icon="solar:shop-2-line-duotone" class="text-warning"></iconify-icon>
+                      <div class="icon-title">shop-2</div>
+                    </div>
+                  </div>
+                  <div class="col-6 col-sm-4 col-md-3 col-lg-2 icon-item"
+                    onclick="copyIconCode('solar:wallet-money-line-duotone')">
+                    <div class="icon-card">
+                      <iconify-icon icon="solar:wallet-money-line-duotone" class="text-info"></iconify-icon>
+                      <div class="icon-title">wallet-money</div>
+                    </div>
+                  </div>
+                  <div class="col-6 col-sm-4 col-md-3 col-lg-2 icon-item"
+                    onclick="copyIconCode('solar:diploma-line-duotone')">
+                    <div class="icon-card">
+                      <iconify-icon icon="solar:diploma-line-duotone" class="text-purple"
+                        style="color: #8b5cf6;"></iconify-icon>
+                      <div class="icon-title">diploma</div>
+                    </div>
+                  </div>
+                  <div class="col-6 col-sm-4 col-md-3 col-lg-2 icon-item"
+                    onclick="copyIconCode('solar:chart-2-line-duotone')">
+                    <div class="icon-card">
+                      <iconify-icon icon="solar:chart-2-line-duotone" class="text-danger"></iconify-icon>
+                      <div class="icon-title">chart-2</div>
+                    </div>
+                  </div>
+                  <div class="col-6 col-sm-4 col-md-3 col-lg-2 icon-item"
+                    onclick="copyIconCode('solar:document-add-line-duotone')">
+                    <div class="icon-card">
+                      <iconify-icon icon="solar:document-add-line-duotone" class="text-teal"
+                        style="color: #14b8a6;"></iconify-icon>
+                      <div class="icon-title">document-add</div>
+                    </div>
+                  </div>
+                  <div class="col-6 col-sm-4 col-md-3 col-lg-2 icon-item"
+                    onclick="copyIconCode('solar:settings-line-duotone')">
+                    <div class="icon-card">
+                      <iconify-icon icon="solar:settings-line-duotone" class="text-warning"></iconify-icon>
+                      <div class="icon-title">settings</div>
+                    </div>
+                  </div>
+                  <div class="col-6 col-sm-4 col-md-3 col-lg-2 icon-item"
+                    onclick="copyIconCode('solar:bell-bing-line-duotone')">
+                    <div class="icon-card">
+                      <iconify-icon icon="solar:bell-bing-line-duotone" class="text-danger"></iconify-icon>
+                      <div class="icon-title">bell-bing</div>
+                    </div>
+                  </div>
+                  <div class="col-6 col-sm-4 col-md-3 col-lg-2 icon-item"
+                    onclick="copyIconCode('solar:card-recive-line-duotone')">
+                    <div class="icon-card">
+                      <iconify-icon icon="solar:card-recive-line-duotone" class="text-success"></iconify-icon>
+                      <div class="icon-title">card-receive</div>
+                    </div>
+                  </div>
+                  <div class="col-6 col-sm-4 col-md-3 col-lg-2 icon-item"
+                    onclick="copyIconCode('solar:bag-heart-line-duotone')">
+                    <div class="icon-card">
+                      <iconify-icon icon="solar:bag-heart-line-duotone" class="text-amber"
+                        style="color: #f59e0b;"></iconify-icon>
+                      <div class="icon-title">bag-heart</div>
+                    </div>
+                  </div>
+                  <div class="col-6 col-sm-4 col-md-3 col-lg-2 icon-item"
+                    onclick="copyIconCode('solar:pie-chart-line-duotone')">
+                    <div class="icon-card">
+                      <iconify-icon icon="solar:pie-chart-line-duotone" class="text-purple"
+                        style="color: #8b5cf6;"></iconify-icon>
+                      <div class="icon-title">pie-chart</div>
+                    </div>
+                  </div>
+                  <div class="col-6 col-sm-4 col-md-3 col-lg-2 icon-item"
+                    onclick="copyIconCode('solar:map-point-line-duotone')">
+                    <div class="icon-card">
+                      <iconify-icon icon="solar:map-point-line-duotone" class="text-rose"
+                        style="color: #f43f5e;"></iconify-icon>
+                      <div class="icon-title">map-point</div>
+                    </div>
+                  </div>
+                  <div class="col-6 col-sm-4 col-md-3 col-lg-2 icon-item"
+                    onclick="copyIconCode('solar:widget-5-line-duotone')">
+                    <div class="icon-card">
+                      <iconify-icon icon="solar:widget-5-line-duotone" class="text-primary"></iconify-icon>
+                      <div class="icon-title">widget-5</div>
+                    </div>
+                  </div>
+                  <div class="col-6 col-sm-4 col-md-3 col-lg-2 icon-item"
+                    onclick="copyIconCode('solar:user-check-line-duotone')">
+                    <div class="icon-card">
+                      <iconify-icon icon="solar:user-check-line-duotone" class="text-cyan"
+                        style="color: #06b6d4;"></iconify-icon>
+                      <div class="icon-title">user-check</div>
+                    </div>
+                  </div>
+                  <div class="col-6 col-sm-4 col-md-3 col-lg-2 icon-item"
+                    onclick="copyIconCode('solar:shield-check-line-duotone')">
+                    <div class="icon-card">
+                      <iconify-icon icon="solar:shield-check-line-duotone" class="text-success"></iconify-icon>
+                      <div class="icon-title">shield-check</div>
+                    </div>
+                  </div>
+                  <div class="col-6 col-sm-4 col-md-3 col-lg-2 icon-item"
+                    onclick="copyIconCode('solar:clock-circle-line-duotone')">
+                    <div class="icon-card">
+                      <iconify-icon icon="solar:clock-circle-line-duotone" class="text-muted"></iconify-icon>
+                      <div class="icon-title">clock-circle</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <!-- ============================================================= -->
+          <!-- 8. ALERTS, CALLOUTS & TOASTS                                  -->
+          <!-- ============================================================= -->
+          <section id="ui-alerts" class="mb-5">
+            <div class="d-flex align-items-center justify-content-between mb-3">
+              <div>
+                <h4 class="fw-bold text-dark mb-1 d-flex align-items-center gap-2">
+                  <span
+                    class="round-36 bg-warning-subtle text-warning rounded-circle d-flex align-items-center justify-content-center"><i
+                      class="ti ti-bell-ringing fs-5"></i></span>
+                  Alerts, Callouts & Interactive Toasts
+                </h4>
+                <p class="fs-2 text-muted mb-0">Contextual feedback banners, dismissible alerts with icon bubbles, and
+                  live toasts.</p>
+              </div>
+            </div>
+
+            <div class="row g-4">
+              <!-- Dismissible Alerts -->
+              <div class="col-lg-6">
+                <div class="ui-example-card h-100">
+                  <div class="ui-example-header">
+                    <h6 class="mb-0 fw-bold fs-3 text-dark">Dismissible Alerts with Icons</h6>
+                    <span class="badge bg-primary-subtle text-primary fs-1">.alert-dismissible</span>
+                  </div>
+                  <div class="ui-example-body">
+                    <!-- Success Alert -->
+                    <div
+                      class="alert alert-success alert-dismissible fade show d-flex align-items-center gap-3 border-0 shadow-sm"
+                      role="alert">
+                      <span
+                        class="round-40 bg-success text-white rounded-circle d-flex align-items-center justify-content-center flex-shrink-0"><i
+                          class="ti ti-check fs-6"></i></span>
+                      <div>
+                        <strong class="d-block fs-3">Sanction Verified!</strong>
+                        <span class="fs-2">₹12.5 Cr credit linkage successfully credited to Bokaro District CLF.</span>
+                      </div>
+                      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+
+                    <!-- Warning Alert -->
+                    <div
+                      class="alert alert-warning alert-dismissible fade show d-flex align-items-center gap-3 border-0 shadow-sm"
+                      role="alert">
+                      <span
+                        class="round-40 bg-warning text-dark rounded-circle d-flex align-items-center justify-content-center flex-shrink-0"><i
+                          class="ti ti-alert-triangle fs-6"></i></span>
+                      <div>
+                        <strong class="d-block fs-3">Audit Review Pending!</strong>
+                        <span class="fs-2">42 Village Organizations require quarterly social audit submission before
+                          31st March.</span>
+                      </div>
+                      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+
+                    <!-- Danger Alert -->
+                    <div
+                      class="alert alert-danger alert-dismissible fade show d-flex align-items-center gap-3 border-0 shadow-sm mb-0"
+                      role="alert">
+                      <span
+                        class="round-40 bg-danger text-white rounded-circle d-flex align-items-center justify-content-center flex-shrink-0"><i
+                          class="ti ti-x fs-6"></i></span>
+                      <div>
+                        <strong class="d-block fs-3">Submission Rejected</strong>
+                        <span class="fs-2">IFSC code mismatch detected in regional rural cooperative bank
+                          account.</span>
+                      </div>
+                      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Callout Cards & Toast Trigger -->
+              <div class="col-lg-6">
+                <div class="ui-example-card h-100">
+                  <div class="ui-example-header">
+                    <h6 class="mb-0 fw-bold fs-3 text-dark">Accent Callouts & Toast Trigger</h6>
+                    <span class="badge bg-primary-subtle text-primary fs-1">Callouts & Toasts</span>
+                  </div>
+                  <div class="ui-example-body">
+                    <!-- Informational Callout -->
+                    <div class="p-3 bg-light-subtle rounded-3 border-start border-4 border-primary mb-3 shadow-sm">
+                      <h6 class="fs-3 fw-bold text-primary mb-1">State Nodal Officer Directive</h6>
+                      <p class="fs-2 text-muted mb-0">
+                        Ensure 100% saturation of Phulo Jhano Abhiyan in identified vulnerable blocks of Santhal Pargana
+                        division.
+                      </p>
+                    </div>
+
+                    <!-- Live Toast Trigger Button -->
+                    <div class="p-3 bg-light rounded-3 text-center border">
+                      <h6 class="fs-3 fw-bold text-dark mb-2">Interactive Toast Notification</h6>
+                      <p class="fs-2 text-muted mb-3">Click the button below to test a live Bootstrap 5 popup toast
+                        notification.</p>
+                      <button type="button" class="btn btn-primary rounded-pill px-4" onclick="showLiveToast()">
+                        <i class="ti ti-bell fs-5 me-1"></i> Show Live Toast Alert
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <!-- ============================================================= -->
+          <!-- 9. PROGRESS BARS & SPINNERS                                   -->
+          <!-- ============================================================= -->
+          <section id="ui-progress" class="mb-5">
+            <div class="d-flex align-items-center justify-content-between mb-3">
+              <div>
+                <h4 class="fw-bold text-dark mb-1 d-flex align-items-center gap-2">
+                  <span
+                    class="round-36 bg-primary-subtle text-primary rounded-circle d-flex align-items-center justify-content-center"><i
+                      class="ti ti-loader fs-5"></i></span>
+                  Progress Bars, Loaders & Spinners
+                </h4>
+                <p class="fs-2 text-muted mb-0">Glowing progress bars, striped, animated, and theme-colored spinners.
+                </p>
+              </div>
+            </div>
+
+            <div class="row g-4">
+              <!-- Progress Bars -->
+              <div class="col-lg-6">
+                <div class="ui-example-card h-100">
+                  <div class="ui-example-header">
+                    <h6 class="mb-0 fw-bold fs-3 text-dark">Progress Bars</h6>
+                    <span class="badge bg-primary-subtle text-primary fs-1">.progress</span>
+                  </div>
+                  <div class="ui-example-body">
+                    <div class="mb-3">
+                      <div class="d-flex justify-content-between fs-2 text-dark fw-semibold mb-1">
+                        <span>Sakhi Mandals Target</span>
+                        <span>88%</span>
+                      </div>
+                      <div class="progress" style="height: 8px;">
+                        <div class="progress-bar bg-success" role="progressbar" style="width: 88%" aria-valuenow="88"
+                          aria-valuemin="0" aria-valuemax="100"></div>
+                      </div>
+                    </div>
+
+                    <div class="mb-3">
+                      <div class="d-flex justify-content-between fs-2 text-dark fw-semibold mb-1">
+                        <span>Bank Credit Disbursal</span>
+                        <span>94%</span>
+                      </div>
+                      <div class="progress" style="height: 8px;">
+                        <div class="progress-bar bg-primary" role="progressbar" style="width: 94%" aria-valuenow="94"
+                          aria-valuemin="0" aria-valuemax="100"></div>
+                      </div>
+                    </div>
+
+                    <div class="mb-3">
+                      <div class="d-flex justify-content-between fs-2 text-dark fw-semibold mb-1">
+                        <span>Palash Mart Sales Target (Striped & Animated)</span>
+                        <span>76%</span>
+                      </div>
+                      <div class="progress" style="height: 10px;">
+                        <div class="progress-bar bg-warning progress-bar-striped progress-bar-animated"
+                          role="progressbar" style="width: 76%" aria-valuenow="76" aria-valuemin="0"
+                          aria-valuemax="100"></div>
+                      </div>
+                    </div>
+
+                    <div>
+                      <div class="d-flex justify-content-between fs-2 text-dark fw-semibold mb-1">
+                        <span>DDU-GKY Placements</span>
+                        <span>82%</span>
+                      </div>
+                      <div class="progress" style="height: 8px;">
+                        <div class="progress-bar bg-purple" style="background-color: #8b5cf6; width: 82%"
+                          role="progressbar" aria-valuenow="82" aria-valuemin="0" aria-valuemax="100"></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Spinners & Loaders -->
+              <div class="col-lg-6">
+                <div class="ui-example-card h-100">
+                  <div class="ui-example-header">
+                    <h6 class="mb-0 fw-bold fs-3 text-dark">Spinners & Loaders</h6>
+                    <span class="badge bg-primary-subtle text-primary fs-1">.spinner-border</span>
+                  </div>
+                  <div class="ui-example-body">
+                    <h6 class="fs-2 text-uppercase text-muted fw-bold mb-3">Border Spinners:</h6>
+                    <div class="d-flex align-items-center flex-wrap gap-3 mb-4">
+                      <div class="spinner-border text-primary" role="status"><span
+                          class="visually-hidden">Loading...</span></div>
+                      <div class="spinner-border text-success" role="status"><span
+                          class="visually-hidden">Loading...</span></div>
+                      <div class="spinner-border text-danger" role="status"><span
+                          class="visually-hidden">Loading...</span></div>
+                      <div class="spinner-border text-warning" role="status"><span
+                          class="visually-hidden">Loading...</span></div>
+                      <div class="spinner-border text-info" role="status"><span
+                          class="visually-hidden">Loading...</span></div>
+                      <div class="spinner-border spinner-border-sm text-primary" role="status"><span
+                          class="visually-hidden">Loading...</span></div>
+                    </div>
+
+                    <h6 class="fs-2 text-uppercase text-muted fw-bold mb-3">Growing Pulse Spinners:</h6>
+                    <div class="d-flex align-items-center flex-wrap gap-3">
+                      <div class="spinner-grow text-primary" role="status"><span
+                          class="visually-hidden">Loading...</span></div>
+                      <div class="spinner-grow text-success" role="status"><span
+                          class="visually-hidden">Loading...</span></div>
+                      <div class="spinner-grow text-danger" role="status"><span
+                          class="visually-hidden">Loading...</span></div>
+                      <div class="spinner-grow text-warning" role="status"><span
+                          class="visually-hidden">Loading...</span></div>
+                      <div class="spinner-grow spinner-grow-sm text-info" role="status"><span
+                          class="visually-hidden">Loading...</span></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <!-- ============================================================= -->
+          <!-- 10. MODALS, TOOLTIPS & POPOVERS                               -->
+          <!-- ============================================================= -->
+          <section id="ui-modals" class="mb-5">
+            <div class="d-flex align-items-center justify-content-between mb-3">
+              <div>
+                <h4 class="fw-bold text-dark mb-1 d-flex align-items-center gap-2">
+                  <span
+                    class="round-36 bg-success-subtle text-success rounded-circle d-flex align-items-center justify-content-center"><i
+                      class="ti ti-browser fs-5"></i></span>
+                  Modals, Tooltips & Popovers
+                </h4>
+                <p class="fs-2 text-muted mb-0">Singleton hover-only tooltips, click popovers, and interactive modal
+                  dialogs.</p>
+              </div>
+            </div>
+
+            <div class="row g-4">
+              <!-- Tooltips Testing -->
+              <div class="col-lg-6">
+                <div class="ui-example-card h-100">
+                  <div class="ui-example-header">
+                    <h6 class="mb-0 fw-bold fs-3 text-dark">Singleton Tooltips (Hover Only)</h6>
+                    <span class="badge bg-primary-subtle text-primary fs-1">Hover Tested</span>
+                  </div>
+                  <div class="ui-example-body">
+                    <p class="fs-2 text-muted mb-3">Test our refined singleton tooltip system. Fast hovering guarantees
+                      only 1 tooltip shows at a time!</p>
+                    <div class="d-flex flex-wrap gap-2">
+                      <button type="button" class="btn btn-outline-primary" data-bs-toggle="tooltip"
+                        data-bs-placement="top" data-bs-custom-class="custom-tooltip" data-bs-title="Tooltip on Top">
+                        Tooltip on Top
+                      </button>
+                      <button type="button" class="btn btn-outline-success" data-bs-toggle="tooltip"
+                        data-bs-placement="right" data-bs-custom-class="custom-tooltip"
+                        data-bs-title="Tooltip on Right">
+                        Tooltip on Right
+                      </button>
+                      <button type="button" class="btn btn-outline-warning" data-bs-toggle="tooltip"
+                        data-bs-placement="bottom" data-bs-custom-class="custom-tooltip"
+                        data-bs-title="Tooltip on Bottom">
+                        Tooltip on Bottom
+                      </button>
+                      <button type="button" class="btn btn-outline-danger" data-bs-toggle="tooltip"
+                        data-bs-placement="left" data-bs-custom-class="custom-tooltip" data-bs-title="Tooltip on Left">
+                        Tooltip on Left
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Modals & Popovers -->
+              <div class="col-lg-6">
+                <div class="ui-example-card h-100">
+                  <div class="ui-example-header">
+                    <h6 class="mb-0 fw-bold fs-3 text-dark">Interactive Modal Dialog & Popovers</h6>
+                    <span class="badge bg-primary-subtle text-primary fs-1">Modal Trigger</span>
+                  </div>
+                  <div class="ui-example-body">
+                    <p class="fs-2 text-muted mb-3">Launch full interactive modal dialog or click-activated popovers.
+                    </p>
+                    <div class="d-flex flex-wrap gap-3">
+                      <!-- Modal Trigger Button -->
+                      <button type="button" class="btn btn-primary d-flex align-items-center gap-2"
+                        data-bs-toggle="modal" data-bs-target="#uiKitDemoModal">
+                        <i class="ti ti-window fs-5"></i>
+                        <span>Launch Demo Modal</span>
+                      </button>
+
+                      <!-- Popover Trigger -->
+                      <button type="button" class="btn btn-outline-secondary" data-bs-toggle="popover"
+                        title="JSLPS Audit Notice"
+                        data-bs-content="All CLF accounts are subject to monthly reconciliation by the state directorate.">
+                        Click for Popover
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+
+        </div>
+      </div>
+      <!-- Body Wrapper End -->
+    </div>
+    <!-- Page Wrapper End -->
+  </div>
+
+  <!-- ============================================================= -->
+  <!-- DEMO INTERACTIVE MODAL                                        -->
+  <!-- ============================================================= -->
+  <div class="modal fade" id="uiKitDemoModal" tabindex="-1" aria-labelledby="uiKitDemoModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content border-0 shadow-lg rounded-4 overflow-hidden">
+        <div class="modal-header bg-primary text-white p-4">
+          <div class="d-flex align-items-center gap-2">
+            <span
+              class="round-36 bg-white bg-opacity-25 rounded-circle d-flex align-items-center justify-content-center">
+              <i class="ti ti-shield-check fs-5"></i>
+            </span>
+            <h5 class="modal-title fw-bold text-white mb-0" id="uiKitDemoModalLabel">JSLPS Action Dialog</h5>
+          </div>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body p-4">
+          <p class="fs-3 text-dark fw-semibold mb-2">Confirm Beneficiary Verification</p>
+          <p class="fs-2 text-muted mb-3">
+            You are about to approve the revolving fund sanction for <strong>Maa Durga Sakhi Mandal</strong> (Bokaro
+            District). This operation will disburse DBT funds immediately.
+          </p>
+          <div class="p-3 bg-light rounded-3 border">
+            <div class="d-flex justify-content-between fs-2 text-dark mb-1">
+              <span>Sanction ID:</span>
+              <strong class="text-primary">JH-NRLM-2026-981</strong>
+            </div>
+            <div class="d-flex justify-content-between fs-2 text-dark">
+              <span>Sanction Amount:</span>
+              <strong class="text-success">₹1,50,000</strong>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer p-3 bg-light border-0">
+          <button type="button" class="btn btn-outline-secondary rounded-pill px-4"
+            data-bs-dismiss="modal">Cancel</button>
+          <button type="button" class="btn btn-primary rounded-pill px-4" onclick="confirmModalAction()">Confirm &
+            Disburse</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============================================================= -->
+  <!-- TOAST CONTAINER                                               -->
+  <!-- ============================================================= -->
+  <div class="toast-container position-fixed bottom-0 end-0 p-3" style="z-index: 99999;">
+    <div id="liveToastAlert" class="toast align-items-center text-white bg-success border-0 shadow-lg rounded-3"
+      role="alert" aria-live="assertive" aria-atomic="true">
+      <div class="d-flex">
+        <div class="toast-body d-flex align-items-center gap-2">
+          <i class="ti ti-circle-check fs-6"></i>
+          <span id="toastMessageText">Action performed successfully!</span>
+        </div>
+        <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast"
+          aria-label="Close"></button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Offcanvas Customizer -->
+  <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
+    <div class="d-flex align-items-center justify-content-between p-3 border-bottom">
+      <h4 class="offcanvas-title fw-bold" id="offcanvasExampleLabel">Theme Settings</h4>
+      <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    </div>
+    <div class="offcanvas-body p-4">
+      <h6 class="fw-bold fs-3 mb-2">Theme Colors</h6>
+      <div class="d-flex flex-row gap-3 customizer-box mb-4" role="group">
+        <input type="radio" class="btn-check" name="color-theme-layout" id="Blue_Theme" autocomplete="off" checked />
+        <label class="btn p-3 btn-outline-primary rounded-3 d-flex align-items-center justify-content-center"
+          onclick="handleColorTheme('Blue_Theme')" for="Blue_Theme" data-bs-toggle="tooltip" data-bs-trigger="hover"
+          data-bs-title="BLUE_THEME">
+          <i class="icon ti ti-palette fs-5"></i>
+        </label>
+        <input type="radio" class="btn-check" name="color-theme-layout" id="Green_Theme" autocomplete="off" />
+        <label class="btn p-3 btn-outline-success rounded-3 d-flex align-items-center justify-content-center"
+          onclick="handleColorTheme('Green_Theme')" for="Green_Theme" data-bs-toggle="tooltip" data-bs-trigger="hover"
+          data-bs-title="GREEN_THEME">
+          <i class="icon ti ti-palette fs-5"></i>
+        </label>
+        <input type="radio" class="btn-check" name="color-theme-layout" id="Aqua_Theme" autocomplete="off" />
+        <label class="btn p-3 btn-outline-info rounded-3 d-flex align-items-center justify-content-center"
+          onclick="handleColorTheme('Aqua_Theme')" for="Aqua_Theme" data-bs-toggle="tooltip" data-bs-trigger="hover"
+          data-bs-title="AQUA_THEME">
+          <i class="icon ti ti-palette fs-5"></i>
+        </label>
+        <input type="radio" class="btn-check" name="color-theme-layout" id="Orange_Theme" autocomplete="off" />
+        <label class="btn p-3 btn-outline-warning rounded-3 d-flex align-items-center justify-content-center"
+          onclick="handleColorTheme('Orange_Theme')" for="Orange_Theme" data-bs-toggle="tooltip" data-bs-trigger="hover"
+          data-bs-title="ORANGE_THEME">
+          <i class="icon ti ti-palette fs-5"></i>
+        </label>
+        <input type="radio" class="btn-check" name="color-theme-layout" id="Purple_Theme" autocomplete="off" />
+        <label class="btn p-3 btn-outline-secondary rounded-3 d-flex align-items-center justify-content-center"
+          onclick="handleColorTheme('Purple_Theme')" for="Purple_Theme" data-bs-toggle="tooltip" data-bs-trigger="hover"
+          data-bs-title="PURPLE_THEME">
+          <i class="icon ti ti-palette fs-5"></i>
+        </label>
+      </div>
+
+      <h6 class="fw-bold fs-3 mb-2">Container Width</h6>
+      <div class="d-flex flex-row gap-3 customizer-box mb-4" role="group">
+        <input type="radio" class="btn-check" name="layout" id="boxed-layout" autocomplete="off" checked />
+        <label class="btn p-3 btn-outline-primary rounded-3 w-50" for="boxed-layout">
+          <i class="icon ti ti-layout-distribute-vertical fs-5 me-2"></i>Boxed
+        </label>
+        <input type="radio" class="btn-check" name="layout" id="full-layout" autocomplete="off" />
+        <label class="btn p-3 btn-outline-primary rounded-3 w-50" for="full-layout">
+          <i class="icon ti ti-layout-distribute-horizontal fs-5 me-2"></i>Full
+        </label>
+      </div>
+    </div>
+  </div>
+
+  <div class="dark-transparent sidebartoggler"></div>
+
+  <!-- =============================================== -->
+  <!-- Javascript Dependencies                         -->
+  <!-- =============================================== -->
+  <!-- Vendor & jQuery -->
+  <script src="assets/js/vendor.min.js"></script>
+  <!-- Bootstrap Bundle -->
+  <script src="assets/js/bootstrap.bundle.min.js"></script>
+  <!-- Simplebar Custom Scrollbar -->
+  <script src="assets/js/simplebar.min.js"></script>
+  <!-- Solar Icons Iconify -->
+  <script src="assets/js/iconify-icon.min.js"></script>
+  <!-- App Init & Theme Setup -->
+  <script src="assets/js/app.init.js"></script>
+  <script src="assets/js/theme.js"></script>
+  <script src="assets/js/app.min.js"></script>
+  <script src="assets/js/sidebarmenu.js"></script>
+
+  <!-- UI Kit Interactive Functionalities -->
+  <script>
+    function handleColorTheme(themeName) {
+      document.documentElement.setAttribute("data-color-theme", themeName);
+    }
+
+    // Toggle Password Visibility
+    function togglePasswordVisibility() {
+      const input = document.getElementById("uiKitPasswordInput");
+      const icon = document.getElementById("passwordEyeIcon");
+      if (input.type === "password") {
+        input.type = "text";
+        icon.classList.remove("ti-eye");
+        icon.classList.add("ti-eye-off");
+      } else {
+        input.type = "password";
+        icon.classList.remove("ti-eye-off");
+        icon.classList.add("ti-eye");
+      }
+    }
+
+    // Simulate Loading State on Button
+    function simulateLoading(btn) {
+      const originalHTML = btn.innerHTML;
+      btn.disabled = true;
+      btn.innerHTML = '<span class="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span> Processing...';
+      setTimeout(() => {
+        btn.disabled = false;
+        btn.innerHTML = originalHTML;
+        showLiveToast("✨ Operation completed successfully!");
+      }, 1500);
+    }
+
+    // Filter Icons in Grid
+    function filterIcons(query) {
+      const q = query.toLowerCase();
+      const items = document.querySelectorAll("#iconGalleryGrid .icon-item");
+      items.forEach((item) => {
+        const text = item.textContent.toLowerCase();
+        if (text.includes(q)) {
+          item.style.display = "";
+        } else {
+          item.style.display = "none";
+        }
+      });
+    }
+
+    // Copy Icon Code to Clipboard
+    function copyIconCode(iconName) {
+      const code = '<iconify-icon icon="' + iconName + '"></iconify-icon>';
+      if (navigator.clipboard) {
+        navigator.clipboard.writeText(code).then(() => {
+          showLiveToast("📋 Copied: " + code);
+        });
+      } else {
+        showLiveToast("📋 Icon: " + iconName);
+      }
+    }
+
+    // Live Toast Alert Display
+    function showLiveToast(msg = "Action performed successfully!") {
+      document.getElementById("toastMessageText").textContent = msg;
+      const toastEl = document.getElementById("liveToastAlert");
+      const toast = new bootstrap.Toast(toastEl, { delay: 3000 });
+      toast.show();
+    }
+
+    // Confirm Modal Action
+    function confirmModalAction() {
+      const modalEl = document.getElementById("uiKitDemoModal");
+      const modal = bootstrap.Modal.getInstance(modalEl);
+      if (modal) modal.hide();
+      showLiveToast("✅ Beneficiary Grant Sanction Disbursed!");
+    }
+  </script>
+</body>
+
+</html>

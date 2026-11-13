@@ -1,0 +1,1195 @@
+/* ==========================================================================
+   JSLPS Dashboard - Awesome Animations & Advanced Shadow System
+   ========================================================================== */
+
+:root {
+  --jslps-primary: #059669;
+  --jslps-primary-light: #10b981;
+  --jslps-primary-subtle: rgba(16, 185, 129, 0.12);
+  --jslps-accent: #f59e0b;
+  --jslps-blue: #3b82f6;
+  --jslps-purple: #8b5cf6;
+  --shadow-sm: 0 2px 8px -2px rgba(15, 23, 42, 0.06), 0 1px 4px -1px rgba(15, 23, 42, 0.04);
+  --shadow-md: 0 8px 20px -4px rgba(15, 23, 42, 0.08), 0 4px 8px -2px rgba(15, 23, 42, 0.03);
+  --shadow-lg: 0 16px 32px -8px rgba(15, 23, 42, 0.12), 0 6px 12px -4px rgba(15, 23, 42, 0.05);
+  --shadow-hover: 0 20px 35px -8px rgba(16, 185, 129, 0.18), 0 8px 16px -4px rgba(15, 23, 42, 0.06);
+  --shadow-glow-emerald: 0 12px 28px -6px rgba(16, 185, 129, 0.35);
+  --shadow-glow-blue: 0 12px 28px -6px rgba(59, 130, 246, 0.35);
+  --shadow-glow-amber: 0 12px 28px -6px rgba(245, 158, 11, 0.35);
+  --shadow-glow-purple: 0 12px 28px -6px rgba(139, 92, 246, 0.35);
+}
+
+/* --------------------------------------------------------------------------
+   Keyframe Animations
+   -------------------------------------------------------------------------- */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes floatGentle {
+
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+
+  50% {
+    transform: translateY(-6px);
+  }
+}
+
+@keyframes pulseRadar {
+  0% {
+    transform: scale(0.95);
+    box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7);
+  }
+
+  70% {
+    transform: scale(1);
+    box-shadow: 0 0 0 10px rgba(16, 185, 129, 0);
+  }
+
+  100% {
+    transform: scale(0.95);
+    box-shadow: 0 0 0 0 rgba(16, 185, 129, 0);
+  }
+}
+
+@keyframes pulseBadge {
+
+  0%,
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  50% {
+    opacity: 0.7;
+    transform: scale(1.1);
+  }
+}
+
+@keyframes shimmerEffect {
+  0% {
+    background-position: -200% 0;
+  }
+
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+@keyframes spinSlow {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes gradientMove {
+  0% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   Animation Utility Classes & Staggering
+   -------------------------------------------------------------------------- */
+.animate-fade-in-up {
+  animation: fadeInUp 0.65s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.animate-delay-1 {
+  animation-delay: 0.08s;
+}
+
+.animate-delay-2 {
+  animation-delay: 0.16s;
+}
+
+.animate-delay-3 {
+  animation-delay: 0.24s;
+}
+
+.animate-delay-4 {
+  animation-delay: 0.32s;
+}
+
+.animate-delay-5 {
+  animation-delay: 0.40s;
+}
+
+.animate-delay-6 {
+  animation-delay: 0.48s;
+}
+
+.float-icon {
+  animation: floatGentle 3.5s ease-in-out infinite;
+}
+
+.radar-live-beacon {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #10b981;
+  animation: pulseRadar 2s infinite;
+}
+
+.badge-pulse {
+  animation: pulseBadge 2s infinite ease-in-out;
+}
+
+/* --------------------------------------------------------------------------
+   Super Premium Shadow System
+   -------------------------------------------------------------------------- */
+.card-shadow-sm {
+  box-shadow: var(--shadow-sm) !important;
+}
+
+.card-shadow-md {
+  box-shadow: var(--shadow-md) !important;
+}
+
+.card-shadow-lg {
+  box-shadow: var(--shadow-lg) !important;
+}
+
+.card-shadow-hover {
+  transition: all 0.35s cubic-bezier(0.25, 0.8, 0.25, 1);
+  box-shadow: var(--shadow-sm);
+  border: 1px solid rgba(226, 232, 240, 0.85);
+}
+
+.card-shadow-hover:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-hover) !important;
+  border-color: rgba(16, 185, 129, 0.35);
+}
+
+.shadow-glow-emerald {
+  box-shadow: var(--shadow-glow-emerald) !important;
+}
+
+.shadow-glow-blue {
+  box-shadow: var(--shadow-glow-blue) !important;
+}
+
+.shadow-glow-amber {
+  box-shadow: var(--shadow-glow-amber) !important;
+}
+
+.shadow-glow-purple {
+  box-shadow: var(--shadow-glow-purple) !important;
+}
+
+/* --------------------------------------------------------------------------
+   JSLPS Custom Banner & Stat Card Accents
+   -------------------------------------------------------------------------- */
+.jslps-hero-banner {
+  background: linear-gradient(135deg, #064e3b 0%, #065f46 45%, #0d9488 80%, #0284c7 100%);
+  background-size: 200% 200%;
+  animation: gradientMove 12s ease infinite;
+  color: #ffffff;
+  border-radius: 18px;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 20px 40px -12px rgba(6, 78, 59, 0.45);
+}
+
+.jslps-hero-banner::before {
+  content: "";
+  position: absolute;
+  top: -60px;
+  right: -60px;
+  width: 240px;
+  height: 240px;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.15) 0%, rgba(255, 255, 255, 0) 70%);
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.jslps-hero-banner::after {
+  content: "";
+  position: absolute;
+  bottom: -80px;
+  left: 20%;
+  width: 300px;
+  height: 300px;
+  background: radial-gradient(circle, rgba(16, 185, 129, 0.25) 0%, rgba(255, 255, 255, 0) 75%);
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+/* Stat card icon bubble with soft depth */
+.stat-icon-bubble {
+  width: 54px;
+  height: 54px;
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  transition: transform 0.3s ease;
+}
+
+.card-shadow-hover:hover .stat-icon-bubble {
+  transform: scale(1.05) translateY(-2px);
+}
+
+/* Progress bar glowing track */
+.progress-glow .progress-bar {
+  box-shadow: 0 0 12px rgba(16, 185, 129, 0.6);
+  border-radius: 10px;
+}
+
+/* Table styling enhancement */
+.jslps-table thead th {
+  background-color: #f8fafc;
+  font-size: 11.5px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+  color: #475569;
+  border-top: none;
+  padding: 14px 16px;
+}
+
+.jslps-table tbody tr {
+  transition: all 0.2s ease;
+}
+
+.jslps-table tbody tr:hover {
+  background-color: #f1fdf7;
+  transform: scale(1.002);
+}
+
+/* Quick Action Card */
+.quick-action-card {
+  border-radius: 14px;
+  border: 1px dashed #cbd5e1;
+  background: #ffffff;
+  padding: 16px;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.28s ease;
+}
+
+.quick-action-card:hover {
+  border-color: #10b981;
+  background: #ecfdf5;
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-sm);
+}
+
+/* Custom badge glow */
+.badge-glow-success {
+  background: rgba(16, 185, 129, 0.15);
+  color: #047857;
+  border: 1px solid rgba(16, 185, 129, 0.3);
+  box-shadow: 0 2px 6px rgba(16, 185, 129, 0.12);
+}
+
+.badge-glow-primary {
+  background: rgba(59, 130, 246, 0.15);
+  color: #1d4ed8;
+  border: 1px solid rgba(59, 130, 246, 0.3);
+  box-shadow: 0 2px 6px rgba(59, 130, 246, 0.12);
+}
+
+.badge-glow-amber {
+  background: rgba(245, 158, 11, 0.15);
+  color: #b45309;
+  border: 1px solid rgba(245, 158, 11, 0.3);
+  box-shadow: 0 2px 6px rgba(245, 158, 11, 0.12);
+}
+
+/* Dark mode tweaks for custom components */
+[data-bs-theme="dark"] .card-shadow-hover {
+  background-color: #1e293b;
+  border-color: rgba(51, 65, 85, 0.8);
+}
+
+[data-bs-theme="dark"] .card-shadow-hover:hover {
+  border-color: rgba(16, 185, 129, 0.5);
+  box-shadow: 0 20px 35px -8px rgba(0, 0, 0, 0.5) !important;
+}
+
+[data-bs-theme="dark"] .jslps-table thead th {
+  background-color: #0f172a;
+  color: #94a3b8;
+}
+
+[data-bs-theme="dark"] .jslps-table tbody tr:hover {
+  background-color: rgba(16, 185, 129, 0.08);
+}
+
+[data-bs-theme="dark"] .quick-action-card {
+  background: #1e293b;
+  border-color: #334155;
+}
+
+[data-bs-theme="dark"] .quick-action-card:hover {
+  background: rgba(16, 185, 129, 0.15);
+  border-color: #10b981;
+}
+
+/* ==========================================================================
+   Awesome Premium Custom Tooltip System
+   ========================================================================== */
+
+/* Universal tooltip behavior: non-blocking pointer events, zero mouse trap */
+.tooltip {
+  pointer-events: none !important;
+  z-index: 999999 !important;
+  filter: drop-shadow(0 12px 28px rgba(15, 23, 42, 0.45));
+}
+
+/* Custom Tooltip Container - Pure opacity fade, ZERO transform to preserve Popper coordinates */
+.custom-tooltip {
+  opacity: 0;
+  pointer-events: none !important;
+  transition: opacity 0.12s ease-out !important;
+}
+
+.custom-tooltip.show {
+  opacity: 1 !important;
+  pointer-events: none !important;
+}
+
+/* Tooltip Inner Styling & Spring Micro-Scale on Inner element only */
+.custom-tooltip .tooltip-inner {
+  max-width: 280px !important;
+  padding: 8px 15px !important;
+  background: linear-gradient(135deg, rgba(15, 23, 42, 0.96) 0%, rgba(30, 27, 75, 0.95) 100%) !important;
+  color: #ffffff !important;
+  font-family: inherit !important;
+  font-size: 0.78rem !important;
+  font-weight: 600 !important;
+  letter-spacing: 0.35px !important;
+  line-height: 1.4 !important;
+  text-align: left !important;
+  border-radius: 9px !important;
+  border: 1px solid rgba(99, 91, 255, 0.48) !important;
+  box-shadow: 0 10px 25px -4px rgba(15, 23, 42, 0.7),
+    0 0 18px -2px rgba(99, 91, 255, 0.4) !important;
+  backdrop-filter: blur(12px) !important;
+  -webkit-backdrop-filter: blur(12px) !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 8px !important;
+  white-space: nowrap !important;
+  transform: scale(0.92);
+  transition: transform 0.18s cubic-bezier(0.34, 1.56, 0.64, 1) !important;
+}
+
+.custom-tooltip.show .tooltip-inner {
+  transform: scale(1) !important;
+}
+
+/* Glowing Neon Cyan/Blue Indicator Dot inside Tooltip */
+.custom-tooltip .tooltip-inner::before {
+  content: "";
+  display: inline-block;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #635bff;
+  box-shadow: 0 0 8px 2px #635bff, 0 0 14px 1px rgba(99, 91, 255, 0.8);
+  flex-shrink: 0;
+  animation: tooltipPulse 1.8s infinite ease-in-out;
+}
+
+@keyframes tooltipPulse {
+
+  0%,
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+
+  50% {
+    transform: scale(1.25);
+    opacity: 0.75;
+  }
+}
+
+/* Polished Tooltip Arrow */
+.custom-tooltip.bs-tooltip-end .tooltip-arrow::before,
+.custom-tooltip.bs-tooltip-auto[data-popper-placement^="right"] .tooltip-arrow::before {
+  border-right-color: rgba(15, 23, 42, 0.96) !important;
+}
+
+.custom-tooltip.bs-tooltip-start .tooltip-arrow::before,
+.custom-tooltip.bs-tooltip-auto[data-popper-placement^="left"] .tooltip-arrow::before {
+  border-left-color: rgba(15, 23, 42, 0.96) !important;
+}
+
+.custom-tooltip.bs-tooltip-top .tooltip-arrow::before,
+.custom-tooltip.bs-tooltip-auto[data-popper-placement^="top"] .tooltip-arrow::before {
+  border-top-color: rgba(15, 23, 42, 0.96) !important;
+}
+
+.custom-tooltip.bs-tooltip-bottom .tooltip-arrow::before,
+.custom-tooltip.bs-tooltip-auto[data-popper-placement^="bottom"] .tooltip-arrow::before {
+  border-bottom-color: rgba(15, 23, 42, 0.96) !important;
+}
+
+/* ==========================================================================
+   Universal Light & Luxury Custom Scrollbar System (For Everything)
+   ========================================================================== */
+
+/* 1. Global Browser Scrollbars (Window, Tables, Modals, Cards, Pre, etc.) */
+::-webkit-scrollbar {
+  width: 7px !important;
+  height: 7px !important;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent !important;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(99, 91, 255, 0.22) !important;
+  border-radius: 20px !important;
+  border: 1.5px solid transparent !important;
+  background-clip: padding-box !important;
+  transition: background-color 0.25s ease, box-shadow 0.25s ease !important;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(99, 91, 255, 0.52) !important;
+  box-shadow: 0 0 6px rgba(99, 91, 255, 0.35) !important;
+}
+
+::-webkit-scrollbar-thumb:active {
+  background: rgba(99, 91, 255, 0.75) !important;
+}
+
+::-webkit-scrollbar-corner {
+  background: transparent !important;
+}
+
+/* Firefox Universal Support */
+* {
+  scrollbar-width: thin !important;
+  scrollbar-color: rgba(99, 91, 255, 0.25) transparent !important;
+}
+
+/* 2. SimpleBar Custom Light Scrollbar (Sidebars, Dropdowns, Modals, Offcanvas) */
+.simplebar-track.simplebar-vertical {
+  width: 7px !important;
+  background: transparent !important;
+  right: 1px !important;
+}
+
+.simplebar-track.simplebar-horizontal {
+  height: 7px !important;
+  background: transparent !important;
+  bottom: 1px !important;
+}
+
+.simplebar-scrollbar:before {
+  background: linear-gradient(180deg, rgba(99, 91, 255, 0.28) 0%, rgba(59, 130, 246, 0.32) 100%) !important;
+  border-radius: 20px !important;
+  left: 1px !important;
+  right: 1px !important;
+  opacity: 0.4 !important;
+  transition: opacity 0.25s ease, background 0.25s ease, box-shadow 0.25s ease !important;
+}
+
+.simplebar-track:hover .simplebar-scrollbar:before,
+.simplebar-scrollbar.simplebar-visible:before {
+  opacity: 0.75 !important;
+}
+
+.simplebar-scrollbar:hover:before {
+  background: linear-gradient(180deg, rgba(99, 91, 255, 0.62) 0%, rgba(59, 130, 246, 0.72) 100%) !important;
+  box-shadow: 0 0 8px rgba(99, 91, 255, 0.45) !important;
+  opacity: 1 !important;
+}
+
+/* Specific sleek adjustments for Mini-Nav & Sidebar Panel */
+.side-mini-panel .simplebar-track.simplebar-vertical {
+  width: 5px !important;
+}
+
+.side-mini-panel .simplebar-scrollbar:before {
+  background: linear-gradient(180deg, rgba(99, 91, 255, 0.3) 0%, rgba(59, 130, 246, 0.35) 100%) !important;
+}
+
+.side-mini-panel:hover .simplebar-scrollbar:before {
+  opacity: 0.8 !important;
+}
+
+.side-mini-panel .simplebar-scrollbar:hover:before {
+  background: linear-gradient(180deg, rgba(99, 91, 255, 0.65) 0%, rgba(59, 130, 246, 0.75) 100%) !important;
+}
+
+/* ==========================================================================
+   Vibrant Colorful Menu Icons & Elastic Hover Animations
+   ========================================================================== */
+
+/* ==========================================================================
+   Vibrant Colorful Menu Icons & Dynamic Selected States
+   ========================================================================== */
+
+/* 1. Mini-Nav Inactive State (Default Colorful Icons on Light Background) */
+#mini-1:not(.selected) a iconify-icon {
+  color: #6366f1 !important;
+}
+
+/* Dashboards - Electric Indigo */
+#mini-2:not(.selected) a iconify-icon {
+  color: #10b981 !important;
+}
+
+/* Sakhi Mandal - Emerald Green */
+#mini-3:not(.selected) a iconify-icon {
+  color: #f59e0b !important;
+}
+
+/* Palash Brand - Warm Amber */
+#mini-4:not(.selected) a iconify-icon {
+  color: #06b6d4 !important;
+}
+
+/* Financial Credit - Cyan Blue */
+#mini-5:not(.selected) a iconify-icon {
+  color: #8b5cf6 !important;
+}
+
+/* DDU-GKY Skills - Royal Purple */
+#mini-6:not(.selected) a iconify-icon {
+  color: #f43f5e !important;
+}
+
+/* District Analytics - Rose Coral */
+#mini-7:not(.selected) a iconify-icon {
+  color: #14b8a6 !important;
+}
+
+/* Beneficiary Forms - Teal Aquamarine */
+#mini-8:not(.selected) a iconify-icon {
+  color: #eab308 !important;
+}
+
+/* Appearance Settings - Radiant Gold */
+
+/* 2. Mini-Nav ACTIVE / SELECTED State (Pure White Icon on Solid Blue Background) */
+.side-mini-panel .mini-nav .mini-nav-item.selected>a,
+.side-mini-panel .mini-nav #mini-1.selected>a,
+.side-mini-panel .mini-nav #mini-2.selected>a,
+.side-mini-panel .mini-nav #mini-3.selected>a,
+.side-mini-panel .mini-nav #mini-4.selected>a,
+.side-mini-panel .mini-nav #mini-5.selected>a,
+.side-mini-panel .mini-nav #mini-6.selected>a,
+.side-mini-panel .mini-nav #mini-7.selected>a,
+.side-mini-panel .mini-nav #mini-8.selected>a {
+  background: var(--bs-primary, #635bff) !important;
+  box-shadow: 0 4px 14px -2px rgba(99, 91, 255, 0.45) !important;
+}
+
+.side-mini-panel .mini-nav .mini-nav-item.selected>a:before,
+.side-mini-panel .mini-nav #mini-1.selected>a:before,
+.side-mini-panel .mini-nav #mini-2.selected>a:before,
+.side-mini-panel .mini-nav #mini-3.selected>a:before,
+.side-mini-panel .mini-nav #mini-4.selected>a:before,
+.side-mini-panel .mini-nav #mini-5.selected>a:before,
+.side-mini-panel .mini-nav #mini-6.selected>a:before,
+.side-mini-panel .mini-nav #mini-7.selected>a:before,
+.side-mini-panel .mini-nav #mini-8.selected>a:before {
+  background: var(--bs-primary, #635bff) !important;
+}
+
+.side-mini-panel .mini-nav .mini-nav-item.selected>a iconify-icon,
+.side-mini-panel .mini-nav #mini-1.selected a iconify-icon,
+.side-mini-panel .mini-nav #mini-2.selected a iconify-icon,
+.side-mini-panel .mini-nav #mini-3.selected a iconify-icon,
+.side-mini-panel .mini-nav #mini-4.selected a iconify-icon,
+.side-mini-panel .mini-nav #mini-5.selected a iconify-icon,
+.side-mini-panel .mini-nav #mini-6.selected a iconify-icon,
+.side-mini-panel .mini-nav #mini-7.selected a iconify-icon,
+.side-mini-panel .mini-nav #mini-8.selected a iconify-icon {
+  color: #ffffff !important;
+  fill: #ffffff !important;
+  filter: drop-shadow(0 1px 3px rgba(255, 255, 255, 0.45)) !important;
+}
+
+/* 3. Mini-Nav Base Styling */
+.side-mini-panel .mini-nav .mini-nav-item>a {
+  position: relative;
+  border-radius: 12px !important;
+  margin: 4px auto 10px auto !important;
+  width: 48px !important;
+  height: 48px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  transition: transform 0.28s cubic-bezier(0.34, 1.56, 0.64, 1),
+    background-color 0.24s ease,
+    box-shadow 0.24s ease !important;
+}
+
+.side-mini-panel .mini-nav .mini-nav-item>a iconify-icon {
+  transition: transform 0.28s cubic-bezier(0.34, 1.56, 0.64, 1),
+    color 0.2s ease,
+    filter 0.24s ease !important;
+  display: inline-block;
+}
+
+/* --------------------------------------------------------------------------
+   Awesome SVG & Iconify Icon Hover Spring Animations
+   -------------------------------------------------------------------------- */
+@keyframes svgIconSpring {
+  0% {
+    transform: scale(1) translateY(0);
+  }
+
+  30% {
+    transform: scale(1.15) translateY(-2.5px);
+  }
+
+  55% {
+    transform: scale(0.96) translateY(0.8px);
+  }
+
+  75% {
+    transform: scale(1.06) translateY(-0.5px);
+  }
+
+  100% {
+    transform: scale(1.05) translateY(0);
+  }
+}
+
+@keyframes svgSubmenuSpring {
+  0% {
+    transform: scale(1) translateX(0);
+  }
+
+  30% {
+    transform: scale(1.14) translateX(2.5px);
+  }
+
+  55% {
+    transform: scale(0.97) translateX(-0.5px);
+  }
+
+  75% {
+    transform: scale(1.06) translateX(1px);
+  }
+
+  100% {
+    transform: scale(1.05) translateX(0.5px);
+  }
+}
+
+/* 4. Mini-Nav Hover States (Only when not selected) */
+.side-mini-panel .mini-nav .mini-nav-item:not(.selected)>a:hover:before {
+  display: none !important;
+}
+
+.side-mini-panel .mini-nav .mini-nav-item:not(.selected):hover>a {
+  transform: translateY(-1.5px) !important;
+  box-shadow: 0 4px 12px -2px rgba(15, 23, 42, 0.08), 0 2px 6px -1px rgba(15, 23, 42, 0.04) !important;
+}
+
+/* Active Hover Animation for SVG / Iconify Icons */
+.side-mini-panel .mini-nav .mini-nav-item:hover>a iconify-icon,
+.side-mini-panel .mini-nav .mini-nav-item:hover>a svg,
+.sidebartoggler:hover iconify-icon,
+.nav-link:hover>iconify-icon {
+  animation: svgIconSpring 0.48s cubic-bezier(0.34, 1.56, 0.64, 1) both !important;
+}
+
+.side-mini-panel .mini-nav #mini-1:not(.selected):hover>a {
+  background: rgba(99, 102, 241, 0.10) !important;
+}
+
+.side-mini-panel .mini-nav #mini-1:not(.selected):hover>a iconify-icon {
+  filter: drop-shadow(0 2px 5px rgba(99, 102, 241, 0.28)) !important;
+  color: #6366f1 !important;
+}
+
+.side-mini-panel .mini-nav #mini-2:not(.selected):hover>a {
+  background: rgba(16, 185, 129, 0.10) !important;
+}
+
+.side-mini-panel .mini-nav #mini-2:not(.selected):hover>a iconify-icon {
+  filter: drop-shadow(0 2px 5px rgba(16, 185, 129, 0.28)) !important;
+  color: #10b981 !important;
+}
+
+.side-mini-panel .mini-nav #mini-3:not(.selected):hover>a {
+  background: rgba(245, 158, 11, 0.10) !important;
+}
+
+.side-mini-panel .mini-nav #mini-3:not(.selected):hover>a iconify-icon {
+  filter: drop-shadow(0 2px 5px rgba(245, 158, 11, 0.28)) !important;
+  color: #f59e0b !important;
+}
+
+.side-mini-panel .mini-nav #mini-4:not(.selected):hover>a {
+  background: rgba(6, 182, 212, 0.10) !important;
+}
+
+.side-mini-panel .mini-nav #mini-4:not(.selected):hover>a iconify-icon {
+  filter: drop-shadow(0 2px 5px rgba(6, 182, 212, 0.28)) !important;
+  color: #06b6d4 !important;
+}
+
+.side-mini-panel .mini-nav #mini-5:not(.selected):hover>a {
+  background: rgba(139, 92, 246, 0.10) !important;
+}
+
+.side-mini-panel .mini-nav #mini-5:not(.selected):hover>a iconify-icon {
+  filter: drop-shadow(0 2px 5px rgba(139, 92, 246, 0.28)) !important;
+  color: #8b5cf6 !important;
+}
+
+.side-mini-panel .mini-nav #mini-6:not(.selected):hover>a {
+  background: rgba(244, 63, 94, 0.10) !important;
+}
+
+.side-mini-panel .mini-nav #mini-6:not(.selected):hover>a iconify-icon {
+  filter: drop-shadow(0 2px 5px rgba(244, 63, 94, 0.28)) !important;
+  color: #f43f5e !important;
+}
+
+.side-mini-panel .mini-nav #mini-7:not(.selected):hover>a {
+  background: rgba(20, 184, 166, 0.10) !important;
+}
+
+.side-mini-panel .mini-nav #mini-7:not(.selected):hover>a iconify-icon {
+  filter: drop-shadow(0 2px 5px rgba(20, 184, 166, 0.28)) !important;
+  color: #14b8a6 !important;
+}
+
+.side-mini-panel .mini-nav #mini-8:not(.selected):hover>a {
+  background: rgba(234, 179, 8, 0.10) !important;
+}
+
+.side-mini-panel .mini-nav #mini-8:not(.selected):hover>a iconify-icon {
+  filter: drop-shadow(0 2px 5px rgba(234, 179, 8, 0.28)) !important;
+  color: #eab308 !important;
+}
+
+.side-mini-panel .mini-nav .mini-nav-item.selected:hover>a {
+  background: var(--bs-primary, #635bff) !important;
+  transform: translateY(-1px) !important;
+  box-shadow: 0 4px 14px -2px rgba(99, 91, 255, 0.35) !important;
+}
+
+.side-mini-panel .mini-nav .mini-nav-item.selected:hover>a iconify-icon {
+  color: #ffffff !important;
+  filter: drop-shadow(0 1px 4px rgba(255, 255, 255, 0.45)) !important;
+}
+
+/* ==========================================================================
+   Submenu Links - Dynamic Inactive Colors & Active Pure White
+   ========================================================================== */
+
+/* Submenu Base Styling */
+.sidebarmenu .sidebar-link {
+  transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1),
+    background-color 0.22s ease,
+    color 0.22s ease,
+    box-shadow 0.22s ease !important;
+  border-radius: 9px !important;
+  margin: 3px 10px !important;
+  padding: 8px 12px !important;
+  display: flex !important;
+  align-items: center !important;
+}
+
+.sidebarmenu .sidebar-link iconify-icon,
+.sidebarmenu .sidebar-link i {
+  transition: transform 0.28s cubic-bezier(0.34, 1.56, 0.64, 1),
+    color 0.2s ease,
+    filter 0.25s ease !important;
+  display: inline-block;
+}
+
+/* Inactive Submenu Links (Default) */
+.sidebarmenu .sidebar-link:not(.active) {
+  background: transparent !important;
+  color: #334155 !important;
+}
+
+.sidebarmenu .sidebar-link:not(.active) span,
+.sidebarmenu .sidebar-link:not(.active) .hide-menu {
+  color: #334155 !important;
+}
+
+/* Colorful Icon Classes for Inactive Submenu Links */
+.sidebarmenu .sidebar-link:not(.active) .menu-icon-indigo {
+  color: #6366f1 !important;
+}
+
+.sidebarmenu .sidebar-link:not(.active) .menu-icon-emerald {
+  color: #10b981 !important;
+}
+
+.sidebarmenu .sidebar-link:not(.active) .menu-icon-amber {
+  color: #f59e0b !important;
+}
+
+.sidebarmenu .sidebar-link:not(.active) .menu-icon-orange {
+  color: #ea580c !important;
+}
+
+.sidebarmenu .sidebar-link:not(.active) .menu-icon-cyan {
+  color: #06b6d4 !important;
+}
+
+.sidebarmenu .sidebar-link:not(.active) .menu-icon-purple {
+  color: #8b5cf6 !important;
+}
+
+.sidebarmenu .sidebar-link:not(.active) .menu-icon-rose {
+  color: #f43f5e !important;
+}
+
+.sidebarmenu .sidebar-link:not(.active) .menu-icon-teal {
+  color: #14b8a6 !important;
+}
+
+/* Submenu Links Hover (Inactive) */
+.sidebarmenu .sidebar-link:not(.active):hover {
+  transform: translateX(4px) !important;
+  background: rgba(99, 91, 255, 0.06) !important;
+  color: #635bff !important;
+  box-shadow: 0 2px 8px -2px rgba(99, 91, 255, 0.08) !important;
+}
+
+.sidebarmenu .sidebar-link:hover iconify-icon,
+.sidebarmenu .sidebar-link:hover i,
+.sidebarmenu .sidebar-link:hover svg {
+  animation: svgSubmenuSpring 0.46s cubic-bezier(0.34, 1.56, 0.64, 1) both !important;
+}
+
+.sidebarmenu .sidebar-link:not(.active):hover iconify-icon,
+.sidebarmenu .sidebar-link:not(.active):hover i {
+  filter: drop-shadow(0 1px 3px rgba(99, 91, 255, 0.2)) !important;
+}
+
+/* Active Submenu Links - Solid Blue Background & PURE WHITE Icon and Text */
+.sidebarmenu .sidebar-link.active,
+.sidebarmenu .sidebar-item.selected>.sidebar-link {
+  background-color: var(--bs-primary, #635bff) !important;
+  color: #ffffff !important;
+  box-shadow: 0 3px 10px -2px rgba(99, 91, 255, 0.3) !important;
+}
+
+.sidebarmenu .sidebar-link.active span,
+.sidebarmenu .sidebar-link.active .hide-menu,
+.sidebarmenu .sidebar-item.selected>.sidebar-link span,
+.sidebarmenu .sidebar-item.selected>.sidebar-link .hide-menu {
+  color: #ffffff !important;
+}
+
+.sidebarmenu .sidebar-link.active iconify-icon,
+.sidebarmenu .sidebar-link.active i,
+.sidebarmenu .sidebar-link.active svg,
+.sidebarmenu .sidebar-link.active [class*="menu-icon-"],
+.sidebarmenu .sidebar-link.active [class*="text-"],
+.sidebarmenu .sidebar-item.selected>.sidebar-link iconify-icon,
+.sidebarmenu .sidebar-item.selected>.sidebar-link i,
+.sidebarmenu .sidebar-item.selected>.sidebar-link svg,
+.sidebarmenu .sidebar-item.selected>.sidebar-link [class*="menu-icon-"],
+.sidebarmenu .sidebar-item.selected>.sidebar-link [class*="text-"] {
+  color: #ffffff !important;
+  fill: #ffffff !important;
+  filter: drop-shadow(0 1px 3px rgba(255, 255, 255, 0.4)) !important;
+}
+
+.sidebarmenu .sidebar-link.active iconify-icon svg,
+.sidebarmenu .sidebar-link.active iconify-icon svg path,
+.sidebarmenu .sidebar-link.active svg path,
+.sidebarmenu .sidebar-item.selected>.sidebar-link iconify-icon svg,
+.sidebarmenu .sidebar-item.selected>.sidebar-link iconify-icon svg path,
+.sidebarmenu .sidebar-item.selected>.sidebar-link svg path {
+  fill: #ffffff !important;
+  stroke: #ffffff !important;
+  color: #ffffff !important;
+}
+
+.sidebarmenu .sidebar-link.active:hover {
+  transform: translateX(4px) !important;
+  background-color: var(--bs-primary, #635bff) !important;
+}
+
+/* ==========================================================================
+   Awesome 4 Colorful Premium Gradient KPI Cards
+   ========================================================================== */
+
+.premium-card {
+  position: relative;
+  overflow: hidden;
+  border-radius: 20px !important;
+  border: 1px solid rgba(255, 255, 255, 0.28) !important;
+  color: #ffffff !important;
+  transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1),
+    box-shadow 0.35s cubic-bezier(0.34, 1.56, 0.64, 1) !important;
+  cursor: pointer;
+}
+
+/* Background Decorative Glowing Watermarks */
+.premium-card::before {
+  content: "";
+  position: absolute;
+  top: -35px;
+  right: -35px;
+  width: 155px;
+  height: 155px;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.28) 0%, rgba(255, 255, 255, 0) 70%);
+  border-radius: 50%;
+  pointer-events: none;
+  transition: transform 0.5s ease;
+}
+
+.premium-card::after {
+  content: "";
+  position: absolute;
+  bottom: -45px;
+  left: 20%;
+  width: 130px;
+  height: 130px;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.16) 0%, rgba(255, 255, 255, 0) 75%);
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.premium-card:hover {
+  transform: translateY(-4px) !important;
+}
+
+.premium-card:hover::before {
+  transform: scale(1.15);
+}
+
+/* 4 Distinct Vibrant Luxury Gradients with Soft Professional Shadows */
+.premium-card-emerald {
+  background: linear-gradient(135deg, #047857 0%, #10b981 50%, #0d9488 100%) !important;
+  box-shadow: 0 8px 18px -4px rgba(16, 185, 129, 0.28), 0 3px 6px -2px rgba(15, 23, 42, 0.05) !important;
+}
+
+.premium-card-emerald:hover {
+  box-shadow: 0 12px 24px -4px rgba(16, 185, 129, 0.38), 0 4px 10px -2px rgba(15, 23, 42, 0.08) !important;
+}
+
+.premium-card-blue {
+  background: linear-gradient(135deg, #4338ca 0%, #3b82f6 50%, #2563eb 100%) !important;
+  box-shadow: 0 8px 18px -4px rgba(59, 130, 246, 0.28), 0 3px 6px -2px rgba(15, 23, 42, 0.05) !important;
+}
+
+.premium-card-blue:hover {
+  box-shadow: 0 12px 24px -4px rgba(59, 130, 246, 0.38), 0 4px 10px -2px rgba(15, 23, 42, 0.08) !important;
+}
+
+.premium-card-amber {
+  background: linear-gradient(135deg, #b45309 0%, #f59e0b 50%, #ea580c 100%) !important;
+  box-shadow: 0 8px 18px -4px rgba(245, 158, 11, 0.28), 0 3px 6px -2px rgba(15, 23, 42, 0.05) !important;
+}
+
+.premium-card-amber:hover {
+  box-shadow: 0 12px 24px -4px rgba(245, 158, 11, 0.38), 0 4px 10px -2px rgba(15, 23, 42, 0.08) !important;
+}
+
+.premium-card-purple {
+  background: linear-gradient(135deg, #6d28d9 0%, #8b5cf6 50%, #6366f1 100%) !important;
+  box-shadow: 0 8px 18px -4px rgba(139, 92, 246, 0.28), 0 3px 6px -2px rgba(15, 23, 42, 0.05) !important;
+}
+
+.premium-card-purple:hover {
+  box-shadow: 0 12px 24px -4px rgba(139, 92, 246, 0.38), 0 4px 10px -2px rgba(15, 23, 42, 0.08) !important;
+}
+
+.premium-card .card-body {
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: space-between !important;
+  height: 100% !important;
+  min-height: 162px !important;
+}
+
+/* Card Chip (Header category pill) */
+.premium-card .card-chip {
+  background: rgba(255, 255, 255, 0.22);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  color: #ffffff !important;
+  font-size: 0.72rem !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.3px;
+  padding: 3px 9px !important;
+  border-radius: 20px;
+  display: inline-flex;
+  align-items: center;
+  white-space: nowrap !important;
+  line-height: 1.3 !important;
+}
+
+/* Card Trend Pill */
+.premium-card .card-trend {
+  background: rgba(255, 255, 255, 0.26);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.38);
+  color: #ffffff !important;
+  font-size: 0.72rem !important;
+  font-weight: 700 !important;
+  padding: 3px 8px !important;
+  border-radius: 20px;
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+  white-space: nowrap !important;
+  line-height: 1.3 !important;
+}
+
+/* Icon Bubble Container */
+.premium-card .card-icon-box {
+  width: 44px !important;
+  height: 44px !important;
+  border-radius: 12px !important;
+  background: rgba(255, 255, 255, 0.22);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.38);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 22px !important;
+  color: #ffffff !important;
+  box-shadow: 0 6px 14px -3px rgba(0, 0, 0, 0.16);
+  transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1), background-color 0.3s ease;
+  flex-shrink: 0 !important;
+}
+
+.premium-card:hover .card-icon-box {
+  transform: scale(1.05) translateY(-2px) !important;
+  background: rgba(255, 255, 255, 0.30);
+  box-shadow: 0 4px 12px -2px rgba(0, 0, 0, 0.12);
+}
+
+.premium-card:hover .card-icon-box i,
+.premium-card:hover .card-icon-box svg,
+.premium-card:hover .card-icon-box iconify-icon {
+  animation: svgIconSpring 0.48s cubic-bezier(0.34, 1.56, 0.64, 1) both !important;
+}
+
+/* Typography Inside Card */
+.premium-card .card-value {
+  font-size: 1.38rem !important;
+  font-weight: 700 !important;
+  color: #ffffff !important;
+  line-height: 1.2 !important;
+  margin-bottom: 2px !important;
+  letter-spacing: -0.3px;
+  text-shadow: 0 2px 6px rgba(0, 0, 0, 0.18);
+  white-space: nowrap !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+}
+
+.premium-card .card-label {
+  font-size: 0.78rem !important;
+  color: rgba(255, 255, 255, 0.9) !important;
+  font-weight: 500 !important;
+  margin-bottom: 0 !important;
+  white-space: nowrap !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+  line-height: 1.25 !important;
+}
+
+/* Glowing Progress Bar */
+.premium-card .card-progress-track {
+  background: rgba(255, 255, 255, 0.25);
+  height: 5px !important;
+  border-radius: 10px;
+  margin-top: 12px !important;
+  overflow: hidden;
+}
+
+.premium-card .card-progress-bar {
+  background: #ffffff;
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.9);
+  height: 100%;
+  border-radius: 10px;
+  transition: width 1s ease-in-out;
+}
+
+/* Footer Info */
+.premium-card .card-footer-info {
+  display: flex !important;
+  justify-content: space-between !important;
+  align-items: center !important;
+  margin-top: 6px !important;
+  font-size: 0.72rem !important;
+  color: rgba(255, 255, 255, 0.88) !important;
+  white-space: nowrap !important;
+  gap: 8px !important;
+}
+
+.premium-card .card-footer-info span,
+.premium-card .card-footer-info strong {
+  white-space: nowrap !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+}
+
+.premium-card .card-footer-info strong {
+  color: #ffffff !important;
+  font-weight: 700 !important;
+  flex-shrink: 0 !important;
+}
+
+/* Preloader safety failsafe */
+.preloader {
+  animation: preloaderSafeFade 0.4s ease 0.6s forwards !important;
+}
+
+@keyframes preloaderSafeFade {
+  to {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    display: none;
+  }
+}

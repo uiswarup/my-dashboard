@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1E3A8A" />
+      <stop offset="100%" stop-color="#0284C7" />
+    </linearGradient>
+    <linearGradient id="skinGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FDE68A" />
+      <stop offset="100%" stop-color="#F59E0B" />
+    </linearGradient>
+  </defs>
+  <rect width="120" height="120" rx="60" fill="url(#bgGrad)" />
+  <circle cx="60" cy="46" r="22" fill="url(#skinGrad)" />
+  <!-- Hair -->
+  <path d="M38 42 C38 28, 48 20, 60 20 C72 20, 82 28, 82 42 C76 34, 68 32, 60 32 C50 32, 44 36, 38 42 Z" fill="#1E293B" />
+  <!-- Eyes -->
+  <circle cx="52" cy="46" r="2.5" fill="#0F172A" />
+  <circle cx="68" cy="46" r="2.5" fill="#0F172A" />
+  <!-- Smile -->
+  <path d="M54 55 Q60 60 66 55" stroke="#9A3412" stroke-width="2" stroke-linecap="round" fill="none" />
+  <!-- Body/Suit -->
+  <path d="M26 104 C26 84, 40 76, 60 76 C80 76, 94 84, 94 104 Z" fill="#047857" />
+  <polygon points="60,76 52,94 68,94" fill="#FFFFFF" />
+  <polygon points="60,86 56,104 64,104" fill="#F59E0B" />
+</svg>
+

@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="48" height="48">
+  <defs>
+    <linearGradient id="jslpsIconGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#059669" />
+      <stop offset="50%" stop-color="#10B981" />
+      <stop offset="100%" stop-color="#3B82F6" />
+    </linearGradient>
+    <linearGradient id="goldIconGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#F59E0B" />
+      <stop offset="100%" stop-color="#D97706" />
+    </linearGradient>
+  </defs>
+  <circle cx="24" cy="24" r="22" fill="#ECFDF5" stroke="url(#jslpsIconGrad)" stroke-width="2.5" />
+  <path d="M24 8 C24 8, 32 15, 32 23 C32 29, 28 33, 24 35 C20 33, 16 29, 16 23 C16 15, 24 8, 24 8 Z" fill="url(#jslpsIconGrad)" />
+  <path d="M24 17 C28 19, 36 24, 35 32 C34 37, 29 39, 24 37" fill="none" stroke="url(#goldIconGrad)" stroke-width="2.5" stroke-linecap="round" />
+  <path d="M24 17 C20 19, 12 24, 13 32 C14 37, 19 39, 24 37" fill="none" stroke="url(#goldIconGrad)" stroke-width="2.5" stroke-linecap="round" />
+  <circle cx="24" cy="24" r="3.5" fill="#F59E0B" />
+  <path d="M10 38 Q24 45 38 38" fill="none" stroke="#059669" stroke-width="2.5" stroke-linecap="round" />
+</svg>
+
