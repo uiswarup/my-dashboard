@@ -466,56 +466,6 @@
       <div class="body-wrapper">
         <div class="container-fluid py-4">
 
-          <!-- ------------------------------------------------------------- -->
-          <!-- HERO WELCOME BANNER (Dynamic Gradient, Glass & Shadow Effect) -->
-          <!-- ------------------------------------------------------------- -->
-          <div class="row mb-4">
-            <div class="col-12">
-              <div class="jslps-hero-banner p-4 p-md-5 animate-fade-in-up">
-                <div class="row align-items-center position-relative z-1">
-                  <div class="col-lg-8">
-                    <div
-                      class="d-inline-flex align-items-center gap-2 px-3 py-1 bg-white bg-opacity-25 rounded-pill mb-3">
-                      <span class="badge bg-warning text-dark fw-bold">झारखण्ड सरकार</span>
-                      <span class="fs-2 text-white fw-semibold">Rural Development Department</span>
-                    </div>
-                    <h2 class="display-6 fw-extrabold text-white mb-2">
-                      JSLPS State Livelihood Dashboard
-                    </h2>
-                    <p class="fs-4 text-white text-opacity-90 mb-4" style="max-width: 680px;">
-                      Empowering over <strong>32+ Lakh rural households</strong> through <strong>2.84 Lakh Sakhi
-                        Mandals</strong> across all 24 districts of Jharkhand under DAY-NRLM.
-                    </p>
-                    <div class="d-flex flex-wrap align-items-center gap-3">
-                      <button
-                        class="btn btn-warning fw-bold px-4 py-2 rounded-pill shadow-glow-amber d-flex align-items-center gap-2"
-                        onclick="triggerReportExport()">
-                        <i class="ti ti-download fs-5"></i>
-                        <span>Download State Executive Brief</span>
-                      </button>
-                      <button class="btn btn-outline-light px-4 py-2 rounded-pill d-flex align-items-center gap-2"
-                        onclick="refreshDashboardData()">
-                        <i class="ti ti-refresh fs-5" id="refreshIcon"></i>
-                        <span>Live Sync Data</span>
-                      </button>
-                    </div>
-                  </div>
-                  <div class="col-lg-4 d-none d-lg-flex justify-content-end">
-                    <div
-                      class="card bg-white bg-opacity-15 border-0 backdrop-blur p-4 rounded-4 text-white text-center shadow-lg float-icon"
-                      style="max-width: 280px; backdrop-filter: blur(10px);">
-                      <div
-                        class="round-48 bg-white bg-opacity-25 rounded-circle mx-auto mb-2 d-flex align-items-center justify-content-center">
-                        <i class="ti ti-award-filled fs-7 text-warning"></i>
-                      </div>
-                      <h4 class="text-white fw-bold mb-1">98.4%</h4>
-                      <p class="fs-2 text-white text-opacity-75 mb-0">SHG Bank Repayment Track Record in Jharkhand</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
 
           <!-- ------------------------------------------------------------- -->
           <!-- 4 TOP KPI STAT CARDS WITH HOVER LIFT & GLOW SHADOWS           -->
@@ -1639,9 +1589,9 @@
 
     function refreshDashboardData() {
       const icon = document.getElementById("refreshIcon");
-      icon.classList.add("ti-spin");
+      if (icon) icon.classList.add("ti-spin");
       setTimeout(() => {
-        icon.classList.remove("ti-spin");
+        if (icon) icon.classList.remove("ti-spin");
         alert("✨ JSLPS Live Dashboard synced with NIC Jharkhand State Gateway!");
       }, 800);
     }
