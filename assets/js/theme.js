@@ -2,11 +2,17 @@ document.addEventListener("DOMContentLoaded", function () {
   "use strict";
 
   // =================================
-  // Hide preloader (Safe & Instant)
+  // Hide preloader (Safe & Smooth Transition)
   // =================================
   var preloader = document.querySelector(".preloader");
   if (preloader) {
-    preloader.style.display = "none";
+    setTimeout(function () {
+      preloader.style.transition = "opacity 0.4s ease, visibility 0.4s ease";
+      preloader.style.opacity = "0";
+      setTimeout(function () {
+        preloader.style.display = "none";
+      }, 400);
+    }, 700);
   }
 
   // =================================
